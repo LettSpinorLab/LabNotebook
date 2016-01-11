@@ -78,11 +78,22 @@
 
 <h4 id="163545-11012016">16:35:45-11/01/2016</h4>
 
-<p>Aligning the SFG system.  First thing to do is align the Tapered Amplifier.  The light comes out of the fiber laser, goes through an isolator and two lenses before being steered in to the amplifier.  A few things to figure out</p>
+<p>Aligning the SFG system.  First thing to do is align the Tapered Amplifier.  The light comes out of the fiber laser, goes through an isolator and two lenses before being steered in to the amplifier.  </p>
 
-<ul>
-<li>The height of the optics is above the tapered amplifier and I have not changed them, was the beam simply steered down before, or am I missing something? </li>
-<li>What is the best way to align a TA?  It can be very harmful to send light into it without current and also to send current without light, so what is proper?</li>
-<li>Is the distance between the lenses supposed to be a telescope or is it supposed to focus the light into the TA?  I think it is probably a telescope since there is already a focusing lens built into the TA.</li>
-</ul></div></body>
+<p>Brian gave me some tips on starting up the TA, I am going to copy them into this document.</p>
+
+<ol>
+<li>Check your TA chip is OK by diode testing it. It should have a normal diode voltage drop in one direction and infinite resistance in the other direction</li>
+<li>Mount the chip. The mount has x, y and z degrees of freedom. To change x, loosen the bolts through to the base and slide the mount. To change y, add aluminum foil underneath the mount. To change z, rotate the threaded lens mount.</li>
+<li>Connect the current controller and temp controller. Set the temp controller at about 20C. Put the current controller at 0A.</li>
+<li>For a 2W chip, do not go above 400mA without properly seeding the laser. Also avoid seeding the TA for long times without running current through the TA. Check the manufacturer spec for the max seed. Eagleyard should be 50mW max. We use 30-35mW usually. <br>
+<ul><li>Adjust the spontaneous emission. It should be going straight backwards from the mount and level to the table.</li>
+<li>Collimate the beam by using the lens mount z adjustment. It will probably have a wide horizontal halo. Ignore that and make the center bright part collimated.</li>
+<li>Bring in your seed beam to the TA. It should be mode matched (collimated and the same size as the back reflection).</li></ul></li>
+<li>You should be seeding the laser at this point. Optimize the output power at 400mA      current. You should aim for &gt;10mW output. Yes, you are getting out less than you put in.</li>
+<li>Before doing any experiment (or anything with a potential for back reflection), put in an optical isolator. You will need it!</li>
+<li>Carefully increase the current and plot the output power versus current. The curve will level off somewhere. Stop increasing current when it starts to level off. This is your max current.</li>
+<li>The output spatial mode will look terrible. Good luck shaping it. If you’re putting it into a fiber, be careful not to burn the fiber. The TA spatial mode is a function of current, so you will need to constantly realign as you turn the TA current up.</li>
+<li>It is highly recommended that a piece of the TA input seed and output power is simultaneously put into a fabry perot to determine if there the TA is causing feedback to the seed. An optical isolator on the input seed may be necessary.</li>
+</ol></div></body>
 </html>
