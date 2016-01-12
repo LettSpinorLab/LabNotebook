@@ -29,7 +29,16 @@
 </li>
 </ul>
 </li>
-<li><a href="#1122016">1/12/2016</a></li>
+<li><a href="#1122016">1/12/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#102247-12012016">10:22:47-12/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -144,11 +153,83 @@
 <li>mean field</li>
 </ul>
 
-<p>Right now the mean field and fock state simulations comprae well, I think the issue is that the coherent evolution uses parameters which need to be scaled by factors of <script type="math/tex" id="MathJax-Element-4">\pi</script>.  I belive the correct scaling is <script type="math/tex" id="MathJax-Element-5">4 \pi c</script>, where <script type="math/tex" id="MathJax-Element-6">c</script> is the dynamical evolution rate.</p>
+<p>Right now the mean field and fock state simulations comprae well, I think the issue is that the coherent evolution uses parameters which need to be scaled by factors of <script type="math/tex" id="MathJax-Element-1">\pi</script>.  I belive the correct scaling is <script type="math/tex" id="MathJax-Element-2">4 \pi c</script>, where <script type="math/tex" id="MathJax-Element-3">c</script> is the dynamical evolution rate.</p>
 
 <p>The public access to the program will be through a script which does all of the conversions, so users should not have to worry about this.  Right now I am working with simulations of about 5000 atoms as it is inconvenient to run coherent simulations for larger atom numbers.  I will run a large simulation while I try to align the TA and check back after lunch.</p>
 
+
+
 <h4 id="102247-12012016">10:22:47-12/01/2016</h4>
 
-<p>Now I am working on aligning the TA using instructions from yesterday.</p></div></body>
+<p>Now I am working on aligning the TA using instructions from yesterday.</p>
+
+<ol>
+<li>Wired up the temperature PID circuit and set it to 18.2 C.</li>
+<li>TA current turned on, no spontaneous emission.  Checked connections and tried again, still no emission.  Need to turn off lights probably.  Turned off lights, weak emission, but there.</li>
+<li>Moved mirrors back and aligned two pinholes to align beam from fiber laser into TA.</li>
+</ol>
+
+<h4 id="182337-12012016">18:23:37-12/01/2016</h4>
+
+<p>TA is aligned and with minimal effor have 4mW of output power.  Going to mess with the telescope lense setup to try to optimze this.  Had to take the second lens off of a stage to get it to the right height.  Arne had the last two mirrors lower the light, I moved everything down to the same level.  We have 4.5 mw of power, lets turn up the power and see what we have.  We have put on the attenutator, so our initial reading is different</p>
+
+<table>
+<thead>
+<tr>
+  <th>Current (mA)</th>
+  <th>Output Power  (mW)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>425.2</td>
+  <td>3.75</td>
+</tr>
+<tr>
+  <td>500.6</td>
+  <td>7.62</td>
+</tr>
+<tr>
+  <td>550.3</td>
+  <td>11.8</td>
+</tr>
+<tr>
+  <td>600.0</td>
+  <td>17.7</td>
+</tr>
+<tr>
+  <td>650.0</td>
+  <td>25.9</td>
+</tr>
+<tr>
+  <td>700.1</td>
+  <td>36.2</td>
+</tr>
+<tr>
+  <td>750.6</td>
+  <td>48.7</td>
+</tr>
+<tr>
+  <td>800.4</td>
+  <td>64.6</td>
+</tr>
+<tr>
+  <td>850.3</td>
+  <td>81.2</td>
+</tr>
+<tr>
+  <td>900.6</td>
+  <td>100</td>
+</tr>
+<tr>
+  <td>950.4</td>
+  <td>124</td>
+</tr>
+<tr>
+  <td>1000.3</td>
+  <td>146</td>
+</tr>
+</tbody></table>
+
+
+<p>Tomorrow, we will optimize the beampath more, this is a bit lower than Arne measured, but not too bad.</p></div></body>
 </html>
