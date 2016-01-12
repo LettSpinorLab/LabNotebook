@@ -3,11 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZachLab</title>
+<title>Zach Lab Notebook</title>
 <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
-<body><div class="container"><h1 id="1102016">1/10/2016</h1>
+<body><div class="container"><h2 id="lab-notebook-zachary-glassman-lett-spinor-lab">Lab Notebook (Zachary Glassman- Lett Spinor Lab)</h2>
+
+<p><div class="toc">
+<ul>
+<li><ul>
+<li><a href="#lab-notebook-zachary-glassman-lett-spinor-lab">Lab Notebook (Zachary Glassman- Lett Spinor Lab)</a></li>
+</ul>
+</li>
+<li><a href="#1102016">1/10/2016</a></li>
+<li><a href="#1112016">1/11/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#105004-11012016">10:50:04-11/01/2016</a></li>
+<li><a href="#131359-11012016">13:13:59-11/01/2016</a></li>
+<li><a href="#163545-11012016">16:35:45-11/01/2016</a></li>
+<li><a href="#182125-11012016">18:21:25-11/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#1122016">1/12/2016</a></li>
+</ul>
+</div>
+</p>
+
+
+
+<h1 id="1102016">1/10/2016</h1>
 
 <p>This is the first entry in the markdown lab notebook, we are going to see if we like it.  First thing to do is check the temperatures and the pressures.  Of course this can also be seen on <a href="http://lettspinorlab.github.io/">LettSpinorLab</a> live.  Everything looks good in terms of the circulator outside.</p>
 
@@ -101,5 +130,25 @@
 <li>It is highly recommended that a piece of the TA input seed and output power is simultaneously put into a fabry perot to determine if there the TA is causing feedback to the seed. An optical isolator on the input seed may be necessary.</li>
 </ol>
 
-<p>Also, very useful paper by Dan Steck <a href="http://steck.us/papers/ta.pdf">Steck TA paper</a></p></div></body>
+<p>Also, very useful paper by Dan Steck <a href="http://steck.us/papers/ta.pdf">Steck TA paper</a></p>
+
+
+
+<h1 id="1122016">1/12/2016</h1>
+
+<p>I am trying to figure out how well my simulations compare to each other .  I have three types of simulations:</p>
+
+<ul>
+<li>coherent state evolution</li>
+<li>fock state evolution</li>
+<li>mean field</li>
+</ul>
+
+<p>Right now the mean field and fock state simulations comprae well, I think the issue is that the coherent evolution uses parameters which need to be scaled by factors of <script type="math/tex" id="MathJax-Element-4">\pi</script>.  I belive the correct scaling is <script type="math/tex" id="MathJax-Element-5">4 \pi c</script>, where <script type="math/tex" id="MathJax-Element-6">c</script> is the dynamical evolution rate.</p>
+
+<p>The public access to the program will be through a script which does all of the conversions, so users should not have to worry about this.  Right now I am working with simulations of about 5000 atoms as it is inconvenient to run coherent simulations for larger atom numbers.  I will run a large simulation while I try to align the TA and check back after lunch.</p>
+
+<h4 id="102247-12012016">10:22:47-12/01/2016</h4>
+
+<p>Now I am working on aligning the TA using instructions from yesterday.</p></div></body>
 </html>
