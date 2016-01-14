@@ -40,6 +40,29 @@
 </li>
 </ul>
 </li>
+<li><a href="#1132016">1/13/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#100816-13012016">10:08:16-13/01/2016</a></li>
+<li><a href="#121616-13012016">12:16:16-13/01/2016</a></li>
+<li><a href="#125647-13012016">12:56:47-13/01/2016</a></li>
+<li><a href="#141734-13012016">14:17:34-13/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#1132016-1">1/13/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#101330-14012016">10:13:30-14/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -236,11 +259,174 @@
 
 <p>Tomorrow, we will optimize the beampath more, this is a bit lower than Arne measured on 06/28/2013, but not too bad.</p>
 
+
+
 <h1 id="1132016">1/13/2016</h1>
 
 <p>Played around with commenting the simulation code this morning, using a linter which enforces style guidelines, should make it easier for other people to use.</p>
 
+
+
 <h4 id="100816-13012016">10:08:16-13/01/2016</h4>
 
-<p>Everything looks good with regards to temperature, pressure, and logging software.  Going to optimize the TA.  I moved the mirrors to be closer to the TA and re-aligned completely to save some space on the table.</p></div></body>
+<p>Everything looks good with regards to temperature, pressure, and logging software.  Going to optimize the TA.  I moved the mirrors to be closer to the TA and re-aligned completely to save some space on the table.  I swapped out the mount for the second lens for a micrometer so I can do some finer adjustments.</p>
+
+
+
+<h4 id="121616-13012016">12:16:16-13/01/2016</h4>
+
+<p>TA is now partially aligned, after lunch I will get the power up.  Acquired GPIB to usb cable to hook up SRS630 thermocouple monitor to the computer for the bake. </p>
+
+
+
+<h4 id="125647-13012016">12:56:47-13/01/2016</h4>
+
+<p>Got it back to where it was yesterday.  Will continue trying to optimize, then I will make a measurement of the power as a function of TA current.  </p>
+
+<p>I have optimized as much as I could.  Power measured beyond TA with the FieldMate is 3.02mW with  ~29mW of input seed.  I now put in the optical isolator with 74% efficiency.    This isn’t great, I think I will tweak it up later.</p>
+
+<p>Now we will make the power measurement:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Current (mA)</th>
+  <th>Output Power  (mW)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>400.4</td>
+  <td>2.18</td>
+</tr>
+<tr>
+  <td>449.9</td>
+  <td>3.7</td>
+</tr>
+<tr>
+  <td>500.5</td>
+  <td>5.98</td>
+</tr>
+<tr>
+  <td>552.1</td>
+  <td>9.38</td>
+</tr>
+<tr>
+  <td>602.1</td>
+  <td>14.1</td>
+</tr>
+<tr>
+  <td>651.5</td>
+  <td>20.7</td>
+</tr>
+<tr>
+  <td>700.7</td>
+  <td>29.1</td>
+</tr>
+<tr>
+  <td>751.3</td>
+  <td>39.5</td>
+</tr>
+<tr>
+  <td>802.3</td>
+  <td>53.2</td>
+</tr>
+<tr>
+  <td>855.8</td>
+  <td>68.4</td>
+</tr>
+<tr>
+  <td>902.6</td>
+  <td>83.1</td>
+</tr>
+<tr>
+  <td>950.2</td>
+  <td>102</td>
+</tr>
+<tr>
+  <td>1000.8</td>
+  <td>121</td>
+</tr>
+<tr>
+  <td>1051.1</td>
+  <td>140</td>
+</tr>
+<tr>
+  <td>1102.9</td>
+  <td>165</td>
+</tr>
+<tr>
+  <td>1150.9</td>
+  <td>186</td>
+</tr>
+<tr>
+  <td>1200.8</td>
+  <td>206</td>
+</tr>
+<tr>
+  <td>1255.7</td>
+  <td>238</td>
+</tr>
+<tr>
+  <td>1302.3</td>
+  <td>261</td>
+</tr>
+<tr>
+  <td>1352.1</td>
+  <td>281</td>
+</tr>
+<tr>
+  <td>1400.3</td>
+  <td>311</td>
+</tr>
+<tr>
+  <td>1451.1</td>
+  <td>340</td>
+</tr>
+</tbody></table>
+
+
+<p>This is not enough power, so we will optimize more at low power.  Power optimized.  When we set up the optics for the innolight laser we will need to partially re-align anyway.  </p>
+
+
+
+<h4 id="141734-13012016">14:17:34-13/01/2016</h4>
+
+<p>Now I will get the SRS630 thermocouple reader working.  It will interface with the same python program to push data to website.  </p>
+
+<p>The reader is working and the data is now being stored on an influxdb/grafana workflow which is accessbile at <a href="jqi-logger.physics.umd.edu">JQI-Logger</a> which is a JQI wide timeseries monitoring database setup.  I will not keep passwords here, but there is a Python API for InfluxDB which allows easy data mongering.  </p>
+
+<p>I screwed up when loading the old data into the database and converted timezones wrong, so the old data is recorded as six hours earlier than it actually is.  </p>
+
+
+
+<h1 id="1132016-1">1/13/2016</h1>
+
+<p>Today I will get the rest of the SFG system going as well as wipe and clean the old analysis computer to be used as a monitoring computer to free up serial ports on the laptop.</p>
+
+<p>Cleaned up the SpinorBEC panel on Grafana so it now displays relevent statistics.</p>
+
+<h4 id="101330-14012016">10:13:30-14/01/2016</h4>
+
+<p>Need to properly optimize the two isolators in the TA part of the SFG system.  Aligning an isolator requires the following steps from the <a href="http://www.ofr.com/io_alignment.htm">OFR Website</a></p>
+
+<ol>
+<li>Remove protective tape from polatizor cells.</li>
+<li>Place the isoltaor in the laser beam.  Place a detector &gt; 8” from the ouput polarizer.  Center the beam.</li>
+<li>Loosen set screws on the polarizer cells.</li>
+<li>Rotate the input polariztor until transmission is maximzed, thus aligning it to the laser’s plane of polarization.  Lock down its set screw.</li>
+<li>Rotate the output polarizer until the transmission is maximized.  This should occur at 45 relative to the input plane of polarization.</li>
+<li>Reverse the isolator and put the detector a few inches from the input polarizer.  Center the beam.</li>
+<li>Adjust the output polarizer until the transmission is minimized (should only be 1-2 degrees).</li>
+<li>Return the isolator to operating position.  Should now be ready to use.</li>
+</ol>
+
+<p>The model of isolators and expected transmission we are using are: <br>
+* <a href="https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4915">ThorLabs IO-2.5-1064-VLP</a>, expected transmission is 75% <br>
+* EOT Isolator, expected transmission &gt; 90%</p>
+
+
+
+<h4 id="140847-14012016">14:08:47-14/01/2016</h4>
+
+<p>Had group meeting and lunch.  Removed the EOT isolator and am going to try to optimize TA again.   </p></div></body>
 </html>
