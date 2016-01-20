@@ -53,7 +53,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#1132016-1">1/13/2016</a><ul>
+<li><a href="#1142016">1/14/2016</a><ul>
 <li><ul>
 <li><ul>
 <li><a href="#101330-14012016">10:13:30-14/01/2016</a></li>
@@ -69,6 +69,7 @@
 <li><ul>
 <li><ul>
 <li><a href="#104828-19012016">10:48:28-19/01/2016</a></li>
+<li><a href="#165458-19012016">16:54:58-19/01/2016</a></li>
 </ul>
 </li>
 </ul>
@@ -417,6 +418,8 @@
 
 <p>Cleaned up the SpinorBEC panel on Grafana so it now displays relevent statistics.</p>
 
+
+
 <h4 id="101330-14012016">10:13:30-14/01/2016</h4>
 
 <p>Need to properly optimize the two isolators in the TA part of the SFG system.  Aligning an isolator requires the following steps from the <a href="http://www.ofr.com/io_alignment.htm">OFR Website</a></p>
@@ -612,13 +615,21 @@
 
 <p>Preparing for meeting with Ryan Wilson about the spinor evolution.</p>
 
+
+
 <h4 id="165458-19012016">16:54:58-19/01/2016</h4>
 
-<p>Had a long chat with Ryan Wilson, found that calculation for q was incorrect by factor of <script type="math/tex" id="MathJax-Element-20">(2\pi)^3</script> which is probably a momentum space integral.  Our calculations agree except for that.  I need to prepare plots of :</p>
+<p>Had a long chat with Ryan Wilson, found that calculation for q was incorrect by factor of <script type="math/tex" id="MathJax-Element-62">(2\pi)^3</script> which is probably a momentum space integral.  Our calculations agree except for that.  I need to prepare plots of :</p>
 
 <ul>
 <li>Initial state distribution for truncated wigner</li>
 <li>Long time evolution of coherent state.</li>
-<li>Full simulation for <script type="math/tex" id="MathJax-Element-21">q=-5</script> </li>
-</ul></div></body>
+<li>Full simulation for <script type="math/tex" id="MathJax-Element-63">q=-5</script> </li>
+</ul>
+
+<p>Prepared these plots, they are shown below.  The first is the intial disttribution for TWA at 10k atoms and the second is a simulation of 10k atoms for -5q.  I think there might be a slight issue with the initial state preparation since the simulations should agree slightly better.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-1X1jOqrgN2k/Vp-jDatkl4I/AAAAAAAAG98/-g6SdNNnAXo/s0/InitialDistribution-1.png" alt="Initial TWA" title="InitialDistribution.png"></p>
+
+<p><img src="https://lh3.googleusercontent.com/-PA-Fq5JkNIk/Vp-jLcu8vwI/AAAAAAAAG-I/sNCQOGhPy_s/s0/m5q10k_plot-1.png" alt="Evolution -5q" title="m5q10k_plot.png"></p></div></body>
 </html>
