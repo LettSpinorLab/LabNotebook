@@ -76,6 +76,17 @@
 </li>
 </ul>
 </li>
+<li><a href="#1202016">1/20/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#110759-20012016">11:07:59-20/01/2016</a></li>
+<li><a href="#142213-20012016">14:22:13-20/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -619,12 +630,12 @@
 
 <h4 id="165458-19012016">16:54:58-19/01/2016</h4>
 
-<p>Had a long chat with Ryan Wilson, found that calculation for q was incorrect by factor of <script type="math/tex" id="MathJax-Element-8">(2\pi)^3</script> which is probably a momentum space integral.  Our calculations agree except for that.  I need to prepare plots of :</p>
+<p>Had a long chat with Ryan Wilson, found that calculation for q was incorrect by factor of <script type="math/tex" id="MathJax-Element-6">(2\pi)^3</script> which is probably a momentum space integral.  Our calculations agree except for that.  I need to prepare plots of :</p>
 
 <ul>
 <li>Initial state distribution for truncated wigner</li>
 <li>Long time evolution of coherent state.</li>
-<li>Full simulation for <script type="math/tex" id="MathJax-Element-9">q=-5</script> </li>
+<li>Full simulation for <script type="math/tex" id="MathJax-Element-7">q=-5</script> </li>
 </ul>
 
 <p>Prepared these plots, they are shown below.  The first is the intial disttribution for TWA at 10k atoms and the second is a simulation of 10k atoms for -5q.  I think there might be a slight issue with the initial state preparation since the simulations should agree slightly better.</p>
@@ -642,9 +653,106 @@
 * Get TA aligned with new waveplate (should help power) <br>
 * Set up temperature monitoring of the lab through Rasberry pi or arduino.</p>
 
+
+
 <h4 id="110759-20012016">11:07:59-20/01/2016</h4>
 
 <p>Set up the temperature monitor for the room with an arduino and an <a href="https://www.adafruit.com/products/1782">Adafruit MPC9808</a>.  </p>
 
-<p>I now have cluster access to Deepthought2 and am going to spend the rest of the morning trying to get that working.</p></div></body>
+<p>I now have cluster access to Deepthought2 and am going to spend the rest of the morning trying to get that working.</p>
+
+
+
+<h4 id="142213-20012016">14:22:13-20/01/2016</h4>
+
+<p>I put in the waveplate for the TA which helped the power a bit.  However, the power was wandering around by about .2mW over a timescale of minutes so I adjusted the telescope to see if I could improve that.  The output power at 400mA current is about 8mW now.</p>
+
+<p>I took off the attenuator to get a better measurement and the TA is aligned to 10.8mW.  We are ready to proceed.  </p>
+
+
+
+<h4 id="150705-20012016">15:07:05-20/01/2016</h4>
+
+<p>New power measuremennt </p>
+
+<table>
+<thead>
+<tr>
+  <th>Current (mA)</th>
+  <th>Output Power  (mW)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>400.7</td>
+  <td>7.69</td>
+</tr>
+<tr>
+  <td>501.7</td>
+  <td>18.9</td>
+</tr>
+<tr>
+  <td>603.3</td>
+  <td>39.6</td>
+</tr>
+<tr>
+  <td>713.9</td>
+  <td>74.4</td>
+</tr>
+<tr>
+  <td>801.8</td>
+  <td>111</td>
+</tr>
+<tr>
+  <td>904.7</td>
+  <td>160</td>
+</tr>
+<tr>
+  <td>1001.9</td>
+  <td>216</td>
+</tr>
+<tr>
+  <td>1106.9</td>
+  <td>281</td>
+</tr>
+<tr>
+  <td>1200.5</td>
+  <td>342</td>
+</tr>
+<tr>
+  <td>1300.9</td>
+  <td>416</td>
+</tr>
+<tr>
+  <td>1400.8</td>
+  <td>488</td>
+</tr>
+<tr>
+  <td>1506.4</td>
+  <td>573</td>
+</tr>
+<tr>
+  <td>1601.4</td>
+  <td>647</td>
+</tr>
+<tr>
+  <td>1703.1</td>
+  <td>737</td>
+</tr>
+<tr>
+  <td>1813.2</td>
+  <td>823</td>
+</tr>
+<tr>
+  <td>1903.9</td>
+  <td>917</td>
+</tr>
+<tr>
+  <td>2000.8</td>
+  <td>995</td>
+</tr>
+</tbody></table>
+
+
+<p><img src="https://lh3.googleusercontent.com/-hP2JkiGGJFM/Vp_o8gaFKgI/AAAAAAAAG-o/qzoGg7F_MLI/s0/power1-20-2016.png" alt="enter image description here" title="power1-20-2016.png"> <br>
+This should be good enough.</p></div></body>
 </html>
