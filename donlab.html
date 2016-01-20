@@ -78,5 +78,77 @@ and insert it in the <code>JavaScript code</code> box.</p>
 
 <p>P (DL Pro after fiber) = 17.81 mW</p>
 
-<p>In VRFA software, see 11 mW “signal”.</p></div></body>
+<p>In VRFA software, see 11 mW “signal”.  Running the VRFA in current mode.  Will try a few values of current to see what the power is.  (This should be safer than working in power mode, initially.)</p>
+
+<table>
+<thead>
+<tr>
+  <th>Current (mA)</th>
+  <th>Power (mW)</th>
+  <th>SBS (mW)</th>
+  <th>Signal (mW)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>4100</td>
+  <td>625</td>
+  <td>3</td>
+  <td>328</td>
+</tr>
+<tr>
+  <td>4000</td>
+  <td>538</td>
+  <td>3</td>
+  <td>315</td>
+</tr>
+<tr>
+  <td>3900</td>
+  <td>457</td>
+  <td>3</td>
+  <td>302</td>
+</tr>
+</tbody></table>
+
+
+<p>For all cases, these values fluctuated by</p>
+
+<table>
+<thead>
+<tr>
+  <th>Current (mA)</th>
+  <th>Power (mW)</th>
+  <th>SBS (mW)</th>
+  <th>Signal (mW)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>1</td>
+  <td>15</td>
+  <td>0.5</td>
+  <td>5</td>
+</tr>
+</tbody></table>
+
+
+<p>When the output is off, we see:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Current (mA)</th>
+  <th>Power (mW)</th>
+  <th>SBS (mW)</th>
+  <th>Signal (mW)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>0</td>
+  <td>0</td>
+  <td>0</td>
+  <td>10</td>
+</tr>
+</tbody></table>
+
+
+<p>The output power to current ratio seems a tiny bit low, but probably acceptable.  It’s possible that we’re not factoring in a warm up time into our power measurement.  If this proves to be an issue later on, consider a more thorough alignment of the fiber dock on the DL Pro (including lens alignment and fiber polarization alignment).</p></div></body>
 </html>
