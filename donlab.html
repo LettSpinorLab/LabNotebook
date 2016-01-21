@@ -168,6 +168,8 @@ and insert it in the <code>JavaScript code</code> box.</p>
 
 <p>The output power to current ratio seems a tiny bit low, but probably acceptable.  It’s possible that we’re not factoring in a warm up time into our power measurement.  If this proves to be an issue later on, consider a more thorough alignment of the fiber dock on the DL Pro (including lens alignment and fiber polarization alignment).</p>
 
+
+
 <h4 id="161929-20012016">16:19:29-20/01/2016</h4>
 
 <table>
@@ -220,6 +222,8 @@ and insert it in the <code>JavaScript code</code> box.</p>
 </tbody></table>
 
 
+
+
 <h4 id="161941-20012016">16:19:41-20/01/2016</h4>
 
 <p>Raising the temperature on the main chamber by turning up V3 by 5 V.</p>
@@ -245,5 +249,22 @@ and insert it in the <code>JavaScript code</code> box.</p>
   <td align="center">10</td>
   <td align="center">40</td>
 </tr>
-</tbody></table></div></body>
+</tbody></table>
+
+
+<h4 id="234929-20012016">23:49:29-20/01/2016</h4>
+
+<p>Added an EOT optical isolator after the TA.  Might need to be optimized.  The output of the TA is rather eccentric, with major axis vertical to table.  Ideally, we would reshape with an anamorphic prism pair.  The prism pair that was on the table has a chip in it that makes it unusable.  (Happened during move?)  Without one, we’ll lose even more light through a spatial filter.  Will leave space for a prism pair, and do a “dry run” of setting up spatial filter.</p>
+
+<p>To start, getting a sense of beam size after TA.  Doing a 10/90 knife edge measurement to get rough horizontal (minor) axis diameter.</p>
+
+<p><em>Settings:</em> <br>
+seed laser = 69 mW @ 1064.660 nm, nominally 30 mW into TA <br>
+TA current = 809.5 mA <br>
+power after EOT isolator = 100 mW <br>
+90% (90 mW) micrometer reading = 0.2738” <br>
+10% (10 mW) micrometer reading = 0.3082” <br>
+10/90 width = 0.0344 in = 8.7376E-4 m (or about 1 mm)</p>
+
+<p><a href="http://cem01.ucsd.edu/~vitaliy/courses/ece182/182-06_files/SpatialFiltering.pdf">This article</a> gives an overview of aligning a spatial filter.  In particular, it suggests what objective/pinhole combination to use depending on wavelength and beam diameter.  The table given is for 632 nm light with a beam diameter of 1 mm.  We have a similar beam diameter, but our wavelength is about 60% longer.  For a 20x magnification objective, we would want to use a pinhole with a diameter of about (1.67 x 15 microns) = 25 microns.</p></div></body>
 </html>
