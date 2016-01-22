@@ -89,16 +89,6 @@
 </li>
 </ul>
 </li>
-<li><a href="#1212016">1/21/2016</a><ul>
-<li><ul>
-<li><ul>
-<li><a href="#123008-21012016">12:30:08-21/01/2016</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </div>
 </p>
@@ -791,11 +781,23 @@ This should be good enough.</p>
 
 <p>Hooked up thermocouple to the ion pump below the magnets which should give us an idea of the maximum temperature of the magnets.  It is something like 40 celsius.  So this should not be an issue at all.  As always ones can view the status at <a href="http://jqi-logger.physics.umd.edu/dashboard/db/spinorbec">JQI Logger</a>.  </p>
 
+
+
 <h4 id="161731-21012016">16:17:31-21/01/2016</h4>
 
 <p>Optimized the isolator at full 2A, was already close to what it should be.  Then re-aligned the TA at 2A.  The TA alignment is <em>strongly</em> dependant on the input current, thus final alignments must be done at full power.  I found I had to increase the distance between the telescope lens pair prior to the TA at 2A compared to 400mA.  </p>
 
 <p>The procedure to align the isolator was to rotate the magnetic body until the part of the input beam reflected off the beam splitter on the input side from the incoming beam was minimized.  We will keep the TA alignment as is (~820 mW @ 2A with isolator) for now.</p>
 
-<p>Next we will put in a prism pair and a spacial filter for beam shaping and cleaning.  The prism pair changes the beam height and it is not parallel to the talbe anymore.  The angle is between 1 and 2 degrees from the horizontal.</p></div></body>
+<p>Next we will put in a prism pair and a spacial filter for beam shaping and cleaning.  The prism pair changes the beam height and it is not parallel to the table anymore.  The angle is between 1 and 2 degrees from the horizontal.</p>
+
+
+
+<h4 id="192135-21012016">19:21:35-21/01/2016</h4>
+
+<p>I have fixed this and put in the spatial filter, tomorrow I will align the spatial fiter.</p>
+
+<p>I have updated the Fock State simulation by adding an adaptive stepsize ‘zvode’ method as opposed to a very simple fourth order Runge-Kutta method.  This should alleviate the need to choose a correct step size.  The advantage seems to be that there is no need to choose the step size and there is a benefit when using large atom numbers (&gt;25k), however at smaller atom numbers it seems to do many more steps than the really quite basic fourth order method I already implemented without any noticible increase in error.  At very small atom numbers, it also does better.  </p>
+
+<p>The conclusion is that for any particular time step one chooses with the basic method there is a maximum atom number for which the propogation does not go unstable and a region where it is also faster than an adaptive time step method.  The adaptive time step is always stable, but can take longer times for some atom numbers.  I will have to do more testing, but it could be that using the adaptive algorithm is not as good as optimzing the step for a specific number.  This is unlike the TWA code in which the adaptive step size gave significant performance benefits.</p></div></body>
 </html>
