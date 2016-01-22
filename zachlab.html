@@ -101,7 +101,17 @@
 </li>
 </ul>
 </li>
-<li><a href="#1222016">1/22/2016</a></li>
+<li><a href="#1222016">1/22/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#102300-22012016">10:23:00-22/01/2016</a></li>
+<li><a href="#123904-22012016">12:39:04-22/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -820,7 +830,11 @@ This should be good enough.</p>
 
 <p>It is snowing, so I am working today on my simulations an attempting to get them to run on the cluster.  Unfortunately, my simulations rely on numba, which is a JIT compiler targeting llvm relying on a more updated version of python than is on the cluster.  I have spoken to the cluster admin to see if they can upgrade python, but for today, I will work on removing the dependancy. </p>
 
-<p>Most of the time in the code is spend calculating the tridiagonal Hamtilonian for each <script type="math/tex" id="MathJax-Element-18">k</script> in the number of pairs basis at each time step.  This is done through a function called tri_ham which is written in a optimized for the JIT compiler, although also works without it.  I have profiled the function with and without the compiler to get </p>
+
+
+<h4 id="102300-22012016">10:23:00-22/01/2016</h4>
+
+<p>Most of the time in the code is spend calculating the tridiagonal Hamtilonian for each <script type="math/tex" id="MathJax-Element-8">k</script> in the number of pairs basis at each time step.  This is done through a function called tri_ham which is written in a optimized for the JIT compiler, although also works without it.  I have profiled the function with and without the compiler to get </p>
 
 <table>
 <thead>
@@ -831,7 +845,7 @@ This should be good enough.</p>
 </thead>
 <tbody><tr>
   <td>With JIT</td>
-  <td>811 <script type="math/tex" id="MathJax-Element-19">\mu</script>s</td>
+  <td>811 <script type="math/tex" id="MathJax-Element-9">\mu</script>s</td>
 </tr>
 <tr>
   <td>Without JIT</td>
@@ -844,17 +858,53 @@ This should be good enough.</p>
 
 
 
-<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">    </span><span class="kwd">def</span><span class="pln"> tri_ham</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
-        </span><span class="str">'''compute the tridiagonal hamiltonian for fock state'''</span><span class="pln">
-        ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
-        </span><span class="com">#first for diagonal interation</span><span class="pln">
-        </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
-            ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln">
-        </span><span class="com">#now for ineraction with kp = i-1</span><span class="pln">
-        </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
-            ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-        </span><span class="com">#now for kp = i +1</span><span class="pln">
-        </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">):</span><span class="pln">
-            ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-         </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre></div></body>
+<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">
+</span><span class="kwd">def</span><span class="pln"> tri_ham</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
+    </span><span class="str">'''compute the tridiagonal hamiltonian for fock state'''</span><span class="pln">
+    ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
+    </span><span class="com">#first for diagonal interation</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
+        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln">
+    </span><span class="com">#now for interaction with kp = i-1</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
+        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
+    </span><span class="com">#now for kp = i +1</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">):</span><span class="pln">
+        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
+    </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre>
+
+<p>The goal for right now is to see if I can implement this same functionality using numpy such that I don’t lost speed and can then run easily on the supercomputer.  The dependencies are currently</p>
+
+<ul>
+<li>numpy</li>
+<li>matplotlib</li>
+<li>numba</li>
+<li>sys</li>
+<li>time</li>
+<li>tqdm</li>
+<li>scipy</li>
+</ul>
+
+<p>However, all but numpy and scipy could be removed easily if I can get this function to be faster.</p>
+
+<p>One preliminary solution has been obtained, which runs in 1.45ms, thus only a factor of 2-3 times slower than the JIT compiled code and only has numpy dependency.  </p>
+
+
+
+<h4 id="123904-22012016">12:39:04-22/01/2016</h4>
+
+<p>We also need to change the functions which compute expection values in a similiar manner.  For reference, here is the fast numpy only code for computing the tridiagonal Hamiltonian matrix elements.</p>
+
+<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">
+</span><span class="kwd">def</span><span class="pln"> tri_ham_np</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
+    </span><span class="str">'''compute the tridiagonal hamiltonian for fock state
+    so we can only use numpy, create arrays of the indices'''</span><span class="pln">
+    ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
+    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[</span><span class="lit">0</span><span class="pun">:</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)]</span><span class="pln">
+    ans </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi
+    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)]</span><span class="pln">
+    ans</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[:-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
+    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[:(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">)]</span><span class="pln">
+    ans</span><span class="pun">[:-</span><span class="lit">1</span><span class="pun">]+=(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
+    </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre></div></body>
 </html>
