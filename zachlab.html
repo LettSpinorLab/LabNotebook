@@ -916,5 +916,18 @@ This should be good enough.</p>
 
 <h4 id="132413-22012016">13:24:13-22/01/2016</h4>
 
-<p>This code is now ready to run on the cluster.  The only further optimization that could be done is to use a faster numerical integration algorithm.  I will spend a bit investigating the scipy ode library to see if I can improve this.</p></div></body>
+<p>This code is now ready to run on the cluster.  The only further optimization that could be done is to use a faster numerical integration algorithm.  I will spend a bit investigating the scipy ode library to see if I can improve this.</p>
+
+<h4 id="163916-22012016">16:39:16-22/01/2016</h4>
+
+<p>I have finished with the code for the cluster, my first try is run a bunch of separate fock state simulations with different <script type="math/tex" id="MathJax-Element-57">q</script> to see if anything interesting comes up, and then compare to the mean field at these values.  Using the cluster is somewhat difficult, but I will share what I have learned so far</p>
+
+<ul>
+<li>To submit a bunch of jobs, use the bash scripting language to loop over the job submission command.</li>
+<li>Python support on the cluster is very poor, I will need to work on installing packages myself, however, I found that by loading the module in the workspace, I was able to more easily load the modules.</li>
+</ul>
+
+<p>I ran seven jobs and used 18 seconds of total computing time.  None of them worked completely as I still have not gotten the syntax down.  I believe it has to do with using outdated packages.  I have put in a request for the IT division to update the python packages.  I will be trying more soon.</p>
+
+<p>I will set up some simulations to run on my work computer over the weekend.</p></div></body>
 </html>
