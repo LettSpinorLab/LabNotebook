@@ -101,17 +101,6 @@
 </li>
 </ul>
 </li>
-<li><a href="#1222016">1/22/2016</a><ul>
-<li><ul>
-<li><ul>
-<li><a href="#102300-22012016">10:23:00-22/01/2016</a></li>
-<li><a href="#123904-22012016">12:39:04-22/01/2016</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </div>
 </p>
@@ -858,20 +847,20 @@ This should be good enough.</p>
 
 
 
-<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">
-</span><span class="kwd">def</span><span class="pln"> tri_ham</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
-    </span><span class="str">'''compute the tridiagonal hamiltonian for fock state'''</span><span class="pln">
-    ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
-    </span><span class="com">#first for diagonal interation</span><span class="pln">
-    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
-        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln">
-    </span><span class="com">#now for interaction with kp = i-1</span><span class="pln">
-    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
-        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    </span><span class="com">#now for kp = i +1</span><span class="pln">
-    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">):</span><span class="pln">
-        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre>
+<pre class="prettyprint"><code class="language-python hljs ">
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tri_ham</span><span class="hljs-params">(c,bfield,psi,n_atoms)</span>:</span>
+    <span class="hljs-string">'''compute the tridiagonal hamiltonian for fock state'''</span>
+    ans = np.empty(len(psi), dtype = complex)
+    <span class="hljs-comment">#first for diagonal interation</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(psi)):
+        ans[i] = (i*(<span class="hljs-number">2</span>*(n_atoms-<span class="hljs-number">2</span>*i))-<span class="hljs-number">1</span>)* c/n_atoms*psi[i] + <span class="hljs-number">2</span> * bfield * i*psi[i]
+    <span class="hljs-comment">#now for interaction with kp = i-1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(psi)):
+        ans[i] += i * np.sqrt((n_atoms - <span class="hljs-number">2</span> * (i-<span class="hljs-number">1</span>) - <span class="hljs-number">1</span>)*(n_atoms - <span class="hljs-number">2</span>*(i-<span class="hljs-number">1</span>)))*psi[i-<span class="hljs-number">1</span>]* c/n_atoms
+    <span class="hljs-comment">#now for kp = i +1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(psi)-<span class="hljs-number">1</span>):
+        ans[i] += (i+<span class="hljs-number">1</span>)*np.sqrt((n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>)*(n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">2</span>))*psi[i+<span class="hljs-number">1</span>]* c/n_atoms
+    <span class="hljs-keyword">return</span> ans</code></pre>
 
 <p>The goal for right now is to see if I can implement this same functionality using numpy such that I don’t lost speed and can then run easily on the supercomputer.  The dependencies are currently</p>
 
@@ -895,18 +884,21 @@ This should be good enough.</p>
 
 <p>We also need to change the functions which compute expection values in a similiar manner.  For reference, here is the fast numpy only code for computing the tridiagonal Hamiltonian matrix elements.</p>
 
-<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">
-</span><span class="kwd">def</span><span class="pln"> tri_ham_np</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
-    </span><span class="str">'''compute the tridiagonal hamiltonian for fock state
-    so we can only use numpy, create arrays of the indices'''</span><span class="pln">
-    ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
-    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[</span><span class="lit">0</span><span class="pun">:</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)]</span><span class="pln">
-    ans </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi
-    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)]</span><span class="pln">
-    ans</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[:-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[:(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">)]</span><span class="pln">
-    ans</span><span class="pun">[:-</span><span class="lit">1</span><span class="pun">]+=(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre>
+
+
+<pre class="prettyprint"><code class="language-python hljs ">
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tri_ham_np</span><span class="hljs-params">(c,bfield,psi,n_atoms)</span>:</span>
+    <span class="hljs-string">'''compute the tridiagonal hamiltonian for fock state
+    so we can only use numpy, create arrays of the indices'''</span>
+    ans = np.empty(len(psi), dtype = complex)
+    i = np.mgrid[<span class="hljs-number">0</span>:len(psi)]
+    ans = (i*(<span class="hljs-number">2</span>*(n_atoms-<span class="hljs-number">2</span>*i))-<span class="hljs-number">1</span>)* c/n_atoms*psi + <span class="hljs-number">2</span> * bfield * i*psi
+    i = np.mgrid[<span class="hljs-number">1</span>:len(psi)]
+    ans[<span class="hljs-number">1</span>:] += i * np.sqrt((n_atoms - <span class="hljs-number">2</span> * (i-<span class="hljs-number">1</span>) - <span class="hljs-number">1</span>)*(n_atoms - <span class="hljs-number">2</span>*(i-<span class="hljs-number">1</span>)))*psi[:-<span class="hljs-number">1</span>]* c/n_atoms
+    i = np.mgrid[:(len(psi)-<span class="hljs-number">1</span>)]
+    ans[:-<span class="hljs-number">1</span>]+=(i+<span class="hljs-number">1</span>)*np.sqrt((n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>)*(n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">2</span>))*psi[<span class="hljs-number">1</span>:]* c/n_atoms
+    <span class="hljs-keyword">return</span> ans
+</code></pre>
 
 <p>All code seems to produce equivalent answers and is certainly equivalent mathematically, however, it appears that there is some difference due to machine precision.  After some testing, it appears this difference is acceptable.  </p>
 
@@ -914,13 +906,17 @@ This should be good enough.</p>
 
 <p>The top graph is both evolutions over time for 4000 atoms and the bottom is a histogram of the error.  Since the error is in the 1e-11 range as compared to populations of thousands, this is perfectly acceptable.</p>
 
+
+
 <h4 id="132413-22012016">13:24:13-22/01/2016</h4>
 
 <p>This code is now ready to run on the cluster.  The only further optimization that could be done is to use a faster numerical integration algorithm.  I will spend a bit investigating the scipy ode library to see if I can improve this.</p>
 
+
+
 <h4 id="163916-22012016">16:39:16-22/01/2016</h4>
 
-<p>I have finished with the code for the cluster, my first try is run a bunch of separate fock state simulations with different <script type="math/tex" id="MathJax-Element-57">q</script> to see if anything interesting comes up, and then compare to the mean field at these values.  Using the cluster is somewhat difficult, but I will share what I have learned so far</p>
+<p>I have finished with the code for the cluster, my first try is run a bunch of separate fock state simulations with different <script type="math/tex" id="MathJax-Element-11">q</script> to see if anything interesting comes up, and then compare to the mean field at these values.  Using the cluster is somewhat difficult, but I will share what I have learned so far</p>
 
 <ul>
 <li>To submit a bunch of jobs, use the bash scripting language to loop over the job submission command.</li>
@@ -929,5 +925,17 @@ This should be good enough.</p>
 
 <p>I ran seven jobs and used 18 seconds of total computing time.  None of them worked completely as I still have not gotten the syntax down.  I believe it has to do with using outdated packages.  I have put in a request for the IT division to update the python packages.  I will be trying more soon.</p>
 
-<p>I will set up some simulations to run on my work computer over the weekend.</p></div></body>
+<p>I will set up some simulations to run on my work computer over the weekend.</p>
+
+
+
+<h1 id="1252016">1/25/2016</h1>
+
+<p>Worked on merging the lab notebooks, spent most of the day shoveling my car out of storm Jonas.  Started running simulation for full 40k atoms, should finish by tomorrow.  Also go an email that the cluster is updating the python distribution in the next week or so.  Should be good to run soon.</p>
+
+<h1 id="1262016">1/26/2016</h1>
+
+<p>Finished the full simulation for 40k atoms, the results are here <img src="https://lh3.googleusercontent.com/-lWmkdKHVC30/Vqee96U3NvI/AAAAAAAAHA4/1nmRMDTu02A/s0/40k1s.png" alt="enter image description here" title="40k1s.png"></p>
+
+<p>Compared to the 10k simulation, the fock state and hte coherent state agreement is much better.  The averaging here is not so good (mag, atom loop only 5) so it would be nice to see after a cluster run if averaging over more states helped.  This simulation took ~23 hours so it would not be feasible to run anything larger on my desk computer.</p></div></body>
 </html>
