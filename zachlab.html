@@ -94,28 +94,12 @@
 <li><ul>
 <li><a href="#123008-21012016">12:30:08-21/01/2016</a></li>
 <li><a href="#161731-21012016">16:17:31-21/01/2016</a></li>
-<li><a href="#192135-21012016">19:21:35-21/01/2016</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#1222016">1/22/2016</a><ul>
-<li><ul>
-<li><ul>
-<li><a href="#102300-22012016">10:23:00-22/01/2016</a></li>
-<li><a href="#123904-22012016">12:39:04-22/01/2016</a></li>
-<li><a href="#132413-22012016">13:24:13-22/01/2016</a></li>
-<li><a href="#163916-22012016">16:39:16-22/01/2016</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#1252016">1/25/2016</a></li>
-<li><a href="#1262016">1/26/2016</a></li>
 </ul>
 </div>
 </p>
@@ -956,13 +940,43 @@ This should be good enough.</p>
 
 <p>Compared to the 10k simulation, the fock state and hte coherent state agreement is much better.  The averaging here is not so good (mag, atom loop only 5) so it would be nice to see after a cluster run if averaging over more states helped.  This simulation took ~23 hours so it would not be feasible to run anything larger on my desk computer.</p>
 
+
+
 <h4 id="165351-26012016">16:53:51-26/01/2016</h4>
 
 <p>Wrote the fock state simulation in C++, getting about 15-25% speed improvments which is quite good.</p>
 
 <p>The cluster website is down, but I am attempting to run some code on it.  </p>
 
+
+
 <h4 id="171844-26012016">17:18:44-26/01/2016</h4>
 
-<p>First successful cluster run.  Issue was module python must be loaded before the application is run.</p></div></body>
+<p>First successful cluster run.  Issue was module python must be loaded before the application is run.  First run took 2:23 and it worked.  I will start thinking about the best way to continue using it.  </p>
+
+<p>After all day, I used an additional 5:35 of computing time.  Now that I have the system figured out, I will set up a longer simulation before running more code.</p>
+
+
+
+<h1 id="1292016">1/29/2016</h1>
+
+<p>I have been working on the DAMOP abstract for the past few days in addition to collecting data on the spinor simulations.  I will present some of the hightlights here.</p>
+
+<ul>
+<li>Fixed coherent state and fock state simulation agreement, which is now quite excellent as shown in the following plot<img src="https://lh3.googleusercontent.com/-IoN-o9jTwjE/Vqu5ddV2mrI/AAAAAAAAHJA/SmT2av9IDJg/s0/comparefock_coh.png" alt="enter image description here" title="comparefock_coh.png">  This plot also shows the current issue which is not yet resolved, namely that the TWA simulations (designated as mean field here) are not in great agreement.  Really, they should match almost exactly for at least a period.</li>
+<li>Ran simulations for the microwave reversal pulses in the <script type="math/tex" id="MathJax-Element-12">F=1</script> condensate.  These did produce some nice results. <br>
+<img src="https://lh3.googleusercontent.com/-2Ao7wgllHEU/Vqu7LvhlYKI/AAAAAAAAHJQ/sxVwD23MWLg/s0/q_n5_pulses.png" alt="enter image description here" title="q_n5_pulses.png">  </li>
+<li>We can also look at the calculation of these minimia and their dependence on the initial time of the pulse. <img src="https://lh3.googleusercontent.com/-KPU4zq3r1s4/Vqu7awhQM-I/AAAAAAAAHJc/b3PC_kj5jyo/s0/q_n5_times.png" alt="enter image description here" title="q_n5_times.png"></li>
+<li>Lastly we found a definite optimal pulse power for the optimal time.<img src="https://lh3.googleusercontent.com/-jBfE6RDdS-0/Vqu7r5FcG7I/AAAAAAAAHJo/BrN_9pXxsm4/s0/microwave_norm.png" alt="enter image description here" title="microwave_norm.png">  Each color represents a different initial time for the microwave pulse and its clear the for each initial time, the optimal reversal phase is essentially the same.</li>
+</ul>
+
+<h4 id="150622-29012016">15:06:22-29/01/2016</h4>
+
+<p>I am going to work on aligning the spatial filter after the prism pair.  the biggest issue that the beam is not parallel to the table, I am hoping it is close enough that the spatial filtering is useful.  Procedure will be :</p>
+
+<ol>
+<li>Align the beam through the stage without the lens or the pinhole installed. </li>
+<li>Install the lens and align to the beam.</li>
+<li>Insert the pinhole past the focus of the lens and align.</li>
+</ol></div></body>
 </html>
