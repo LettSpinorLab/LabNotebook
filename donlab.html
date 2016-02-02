@@ -553,9 +553,7 @@ rough pump = gray</p>
 
 <p>In the above plots, Arne’s calculations are in blue, mine are dotted orange.  Aside from a Mod[pi] issue with calculating the phase (apparently due to a branch point), the two sets of calculations match up exactly.  As a result, I’m confident that there are not any errors in this simulation code for a pure state.</p>
 
-<p>The essential code:</p>
-
-
+<p>The essential code (should be copyable into Mathematica):</p>
 
 <pre class="prettyprint"><code class=" hljs tex">dynEqs<span class="hljs-special">[</span>c_, E1_, E0_, 
   En1_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1init_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0init_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1init_<span class="hljs-special">]</span> :=
@@ -587,6 +585,16 @@ rough pump = gray</p>
 <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0_<span class="hljs-special">]</span> := Sqrt<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">]</span>
 <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0_, m_, <span class="hljs-command">\[</span>Chi<span class="hljs-special">]</span>n1_<span class="hljs-special">]</span> := 
  E^(I*<span class="hljs-command">\[</span>Chi<span class="hljs-special">]</span>n1) Sqrt<span class="hljs-special">[</span>(1 - <span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0 - m)/2<span class="hljs-special">]</span></code></pre>
+
+<pre class="prettyprint"><code class=" hljs tex">en1z = sim<span class="hljs-special">[</span>2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> (qhz<span class="hljs-special">[</span>277<span class="hljs-special">]</span>/qt<span class="hljs-special">[</span>10^-4<span class="hljs-special">]</span>^2)*(bf)^2 + 2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> q<span class="hljs-command">\[</span>Mu<span class="hljs-special">]</span>w<span class="hljs-special">]</span>;
+en0z = 0;
+enn1z = sim<span class="hljs-special">[</span>2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> (qhz<span class="hljs-special">[</span>277<span class="hljs-special">]</span>/qt<span class="hljs-special">[</span>10^-4<span class="hljs-special">]</span>^2)*(bf)^2 + 2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> q<span class="hljs-command">\[</span>Mu<span class="hljs-special">]</span>w<span class="hljs-special">]</span>;</code></pre>
+
+<pre class="prettyprint"><code class=" hljs tex"><span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1initz = <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0init, m, chipinit<span class="hljs-special">]</span>;
+<span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initz = <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0init<span class="hljs-special">]</span>;
+<span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1initz = <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0init, m, chiminit<span class="hljs-special">]</span>;</code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs tex">sols = NDSolve<span class="hljs-special">[</span>
   dynEqs<span class="hljs-special">[</span>c, en1z, en0z, 
