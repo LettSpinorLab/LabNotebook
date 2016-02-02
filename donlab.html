@@ -553,7 +553,8 @@ rough pump = gray</p>
 
 <p>In the above plots, Arne’s calculations are in blue, mine are dotted orange.  Aside from a Mod[pi] issue with calculating the phase (apparently due to a branch point), the two sets of calculations match up exactly.  As a result, I’m confident that there are not any errors in this simulation code for a pure state.</p>
 
-<p>The essential code (should be copyable into Mathematica):</p>
+<p>The essential code (should be copyable into Mathematica): <br>
+(note energies are in units of angular frequency)</p>
 
 <pre class="prettyprint"><code class=" hljs tex">dynEqs<span class="hljs-special">[</span>c_, E1_, E0_, 
   En1_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1init_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0init_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1init_<span class="hljs-special">]</span> :=
@@ -599,5 +600,55 @@ enn1z = sim<span class="hljs-special">[</span>2 <span class="hljs-command">\[</s
 <pre class="prettyprint"><code class=" hljs tex">sols = NDSolve<span class="hljs-special">[</span>
   dynEqs<span class="hljs-special">[</span>c, en1z, en0z, 
    enn1z, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1initz, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initz, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1initz<span class="hljs-special">]</span>, <span class="hljs-special">{</span><span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1, <span class="hljs-command">\
-</span><span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1<span class="hljs-special">}</span>, <span class="hljs-special">{</span>t, 0, 0.1<span class="hljs-special">}</span><span class="hljs-special">]</span></code></pre></div></body>
+</span><span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1<span class="hljs-special">}</span>, <span class="hljs-special">{</span>t, 0, 0.1<span class="hljs-special">}</span><span class="hljs-special">]</span></code></pre>
+
+<p>For simulating the case where rho0 = 1 and we have parametric amplification of quantum fluctuations in the stretched states, this code is run for a set of {rho0, m} parameters generated from randomly selected values of {Lx, Ly, Nyz, Nxz} from normal distributions of width N.  Means and standard deviations are then extracted from the set of results.</p>
+
+<p>The essential code for generating the parameter distributions is:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs mathematica">randOp[] := <span class="hljs-keyword">RandomVariate</span>[<span class="hljs-keyword">NormalDistribution</span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>/<span class="hljs-keyword">Sqrt</span>[numAtoms]]]
+tw = <span class="hljs-keyword">Table</span>[
+   lx = randOp[]; ly = randOp[]; nyz = randOp[]; nxz = randOp[];
+   argP = -((ly + nyz)/(lx + nxz));
+   argN = (ly - nyz)/(lx - nxz);
+
+   chiP = <span class="hljs-keyword">If</span>[lx + nxz &gt; <span class="hljs-number">0</span>, <span class="hljs-keyword">ArcTan</span>[argP], <span class="hljs-keyword">ArcTan</span>[argP] + \[<span class="hljs-keyword">Pi</span>]];
+   chiM = <span class="hljs-keyword">If</span>[lx - nxz &gt; <span class="hljs-number">0</span>, <span class="hljs-keyword">ArcTan</span>[argN], <span class="hljs-keyword">ArcTan</span>[argN] + \[<span class="hljs-keyword">Pi</span>]];
+   rho0 = 
+    <span class="hljs-number">1</span>/<span class="hljs-number">2</span> + <span class="hljs-keyword">Sqrt</span>[
+     <span class="hljs-number">1</span>/<span class="hljs-number">4</span> - <span class="hljs-number">1</span>/<span class="hljs-number">8</span> (((lx + nxz)/<span class="hljs-keyword">Cos</span>[chiP])^<span class="hljs-number">2</span> + ((lx - nxz)/ <span class="hljs-keyword">Cos</span>[chiM])^<span class="hljs-number">2</span>)];
+   mm = <span class="hljs-number">1</span>/(
+     <span class="hljs-number">8</span> rho0) (((lx + nxz)/<span class="hljs-keyword">Cos</span>[chiP])^<span class="hljs-number">2</span> - ((lx - nxz)/<span class="hljs-keyword">Cos</span>[chiM])^<span class="hljs-number">2</span>);
+   <span class="hljs-list">{chiP, chiM, rho0, mm}</span>,
+   <span class="hljs-list">{i, numSamp}</span>];</code></pre>
+
+<p>Some results for 10000 atoms and 4000 samples: <br>
+<img src="https://lh3.googleusercontent.com/TgsmVWY2AZqEE3kT43laImO4syg4jwBck1Z16HTiTuarC6ptWTiYuxY7oLYIRv4VljVZ=s800" alt="enter image description here" title="stats.png"> <br>
+Running the spinor oscillation code repeatedly for these 4000 pairs of {rho0, m} takes about 60 seconds on my office computer.</p>
+
+<p>Again, essential code:</p>
+
+<pre class="prettyprint"><code class=" hljs lua">twlist = Transpose@Table[
+    \[Zeta]<span class="hljs-number">1</span>initz = \[Zeta]<span class="hljs-number">1</span>initFrom\[Rho]<span class="hljs-number">0</span>[tw\[Rho]<span class="hljs-string">[[i]]</span>, twm<span class="hljs-string">[[i]]</span>, 
+      tw\[Chi]p<span class="hljs-string">[[i]]</span>];
+    \[Zeta]<span class="hljs-number">0</span>initz = \[Zeta]<span class="hljs-number">0</span>initFrom\[Rho]<span class="hljs-number">0</span>[tw\[Rho]<span class="hljs-string">[[i]]</span>];
+    \[Zeta]n1initz = \[Zeta]n1initFrom\[Rho]<span class="hljs-number">0</span>[tw\[Rho]<span class="hljs-string">[[i]]</span>, twm<span class="hljs-string">[[i]]</span>,
+       tw\[Chi]m<span class="hljs-string">[[i]]</span>];
+    s = NDSolve[
+      dynEqs[c, en1z, en0z, 
+       enn1z, \[Zeta]<span class="hljs-number">1</span>initz, \[Zeta]<span class="hljs-number">0</span>initz, \[Zeta]n1initz], \
+\[Zeta]<span class="hljs-number">0</span>, {t, <span class="hljs-number">0</span>, tmax}];
+    Table[
+     Evaluate[\[Zeta]<span class="hljs-number">0</span>[x] /. s]*
+      Conjugate[Evaluate[\[Zeta]<span class="hljs-number">0</span>[x] /. s]], {x, <span class="hljs-number">0</span>, tmax, tstep}],
+    {i, <span class="hljs-number">1</span>, Length@twm}
+    ];</code></pre>
+
+<p>and result: <br>
+<img src="https://lh3.googleusercontent.com/LbD-PlXTvi3YNuODhq-rpMeysIYmA1H5nwh3yA6WQWec7ElwT8F9pRaq4ggouQ4poGRA=s1000" alt="enter image description here" title="dpf_SpinorSim_qm15c30theta0n10000samps4000.png"> <br>
+Compare with the full quantum coherent state simulation results from Zach: <br>
+<img src="https://lh3.googleusercontent.com/8DZqxUstVcUfNCWdXLHlnGgJKaaD_uVsjmu1-OkdhEVV4YT828bm3929Lagpnuv4uqtM=s800" alt="enter image description here" title="dpf_SpinorSim_compareQuantum_qm15c30theta0n10000samps4000.png"> <img src="https://lh3.googleusercontent.com/Xf5Hf9qFCanP08g-pseO9oQkMiKD2P6BARLJMeITkjIEQDs7E1y6zOZ_Mwyf780MuYm_=s800" alt="enter image description here" title="dpf_SpinorSim_compareQuantum_zoom_qm15c30theta0n10000samps4000.png"> <br>
+Note that in the right plot, green is the full quantum, blue is Don’s MF sim, and orange is Zach’s old MF sim.  It appears that my MF sim gets the period and amplitude exactly right for the first oscillation, but then becomes worse and worse from the first revival onward.</p></div></body>
 </html>
