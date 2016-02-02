@@ -136,6 +136,26 @@
 </li>
 </ul>
 </li>
+<li><a href="#212016">2/1/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#144230-01022016">14:42:30-01/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#222016">2/2/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#114431-02022016">11:44:31-02/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -1038,6 +1058,8 @@ This should be good enough.</p>
 
 <p>Everything is aligned, I need to find a power meter so I can optimize the waveplates and the isolator.  then I should be able to send everything into the fiber.</p>
 
+
+
 <h1 id="222016">2/2/2016</h1>
 
 <p>Looking into the code for our data monitoring, I would like to make a few improvments, namely:</p>
@@ -1065,5 +1087,26 @@ A routine is composed of three tasks: <br>
 1. Subclassing Procedure and adding things themselves (probably preferred way for control) <br>
 2. Creating routine for data processing and using helper functions within Procedure class to instantiate without subclassing</p>
 
-<p>User will be able to specify procedures to load in the configuration procedure on start, or load them in dynamically.</p></div></body>
+<p>User will be able to specify procedures to load in the configuration procedure on start, or load them in dynamically.</p>
+
+
+
+<h4 id="114431-02022016">11:44:31-02/02/2016</h4>
+
+<p>We have some issues with the SFG system alignment, namely that we need more room to put in the telescope system and the spatial filter system.  The problem is that the heights of the TA and the innolight laser are not the same, so the beams must be raised and lowered. </p>
+
+<p>I am moving the TA back a few inches and re-aligning it so we can have the option of putting in a spatial filter later.  Doing same alignment procedure as before, I have not touched anything until the mirrors before the TA, so the lens pair and isolator should still be aligned.</p>
+
+<p>Moved everything back and have the TA producing power, but not very much.  Need to tweak it up for the rest of the day. </p>
+
+<h4 id="161936-02022016">16:19:36-02/02/2016</h4>
+
+<p>Back aligned, getting 992 mA at 2A of current.  Put in the lens system to alter the beam diameter into the fiber.  </p>
+
+<p>Now I am using a power meter to optimize the waveplate-isolator-waveplate grouping after the innolight laser for maximum power.  Borrowed it from Gretchen’s Strontium lab, they need it back before tomorrow morning.  Its not rated for the right wavelength, but it gives me some very insensitive measurement.  Its good enough to align the isolator.</p>
+
+<p>The system relies on a dichroic optic which transmits 1319nm and reflects 1064nm light, however, there is some reflection from the 1319nm beam on the first setup attempt.  This is probably because the optic needs to be at 45 degrees and it is not.  I will adjust the optic until the reflection is minimal and then realign other beam path. <br>
+The following is the properties of the mirror we are using</p>
+
+<p><img src="https://www.thorlabs.com/images/TabImages/DMLP1180_Unpolarized_780px.gif" alt="enter image description here" title=""></p></div></body>
 </html>
