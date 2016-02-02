@@ -530,5 +530,26 @@ rough pump = gray</p>
 
 <p><img src="https://lh3.googleusercontent.com/VzEvzik8uwPHWNMet1WbUvEL251vUX8IKc3gwzU7CNTuIo-O-ZuzIKRbDf6M0712vMAk=s0" alt="enter image description here" title="dpf_image_20160127_01.tiff"></p>
 
-<p>Temperature has returned to normal.</p></div></body>
+<p>Temperature has returned to normal.</p>
+
+<hr>
+
+
+
+<h1 id="222016">2/2/2016</h1>
+
+<p>I have put together a mean-field truncated-Wigner simulation in Mathematica based on these dynamical equations from Hamley’s thesis:</p>
+
+<p><img src="https://lh3.googleusercontent.com/aRgAYw-uPc_wQcdJoIPUfE2pBOqh1zLgUyUelUq5UYXFshXaxBBnZhs3tnk8dWsbIjqT=s400" alt="enter image description here" title="dyneqs.png"></p>
+
+<p>To check that the spinor oscillation code works, I’ve compared the rho0 and theta (spinor phase) data with Arne’s Mathematica notebook “delme.nb” for various parameters:</p>
+
+<p><img src="https://lh3.googleusercontent.com/WIzd_BXYIVkDKubYe-fRp1hcgU0RwtVHP4m0uvUalSYVyJPnSn8csrWrrfgL2rFZT4oD=s800" alt="enter image description here" title="testOscBeff350kHzC30HzM0Theta0Rho005.png"> <br>
+<img src="https://lh3.googleusercontent.com/Vdcah0IwRwOUKI3IqmyPhd5gaaV_x3iH65QzNmSYpd_fyXik2NyKNDUNx9sdHeJdOJUE=s800" alt="enter image description here" title="testOscBeff350kHzC30HzM0Theta0Rho008.png"> <br>
+<img src="https://lh3.googleusercontent.com/bFi_nzfVZg0kwwb-gMu_tp-l87UfzXN6YYBnihprNTEhpc6nHnLkPuUqSrwXolwRLoZX=s800" alt="enter image description here" title="testOscBeff350kHzC30HzM0Theta0Rho002.png"> <br>
+<img src="https://lh3.googleusercontent.com/bRgkIMN11JZ9iGYtO9cBTMffTddFHhxSF14fBDJzwCNqIBO8TGpkihmwCLmbPClruhhe=s800" alt="enter image description here" title="testOscBeff350kHzC30HzM0ThetaPiRho005.png"> <br>
+<img src="https://lh3.googleusercontent.com/DgIgwmqILnIqm7uCBa80XJUtupFHze7ebO-llU7h54JlXXsnz0J_GlcENCzUDFhiHjY3=s800" alt="enter image description here" title="testOscBeff100kHzC30HzM0Theta0Rho005.png"> <br>
+<img src="https://lh3.googleusercontent.com/_GUcEPjehuxIvrmFOf_FLmRDH_BuhbuAr0y9AuTOc8tM68msQtT6uTReEuToHAmjMmz5=s800" alt="](https://lh3.googleusercontent.com/ilhKWVn6sCbfcQKBxvzqVa2n4w_9B1i0ahnXGXjuaB91ln4nXWxSIJa6uaoFhPzymNI8=s800 &quot;testOscBeff350kHzC15HzM0Theta0Rho005.png&quot;)" title="testOscBeff350kHzC30HzM01Theta0Rho005.png"></p>
+
+<p>In the above plots, Arne’s calculations are in blue, mine are dotted orange.  Aside from a Mod[pi] issue with calculating the phase (apparently due to a branch point), the two sets of calculations match up exactly.  As a result, I’m confident that there are not any errors in this simulation code for a pure state.</p></div></body>
 </html>
