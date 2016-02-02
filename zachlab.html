@@ -1026,6 +1026,8 @@ This should be good enough.</p>
 
 <p>The morning I did some simulations for Don to compare his results with and went to the JQI seminar.  Now back to aligning the repump laser system.  I have put in a Melles Griot prism pair which is causing some issues, I am going to change the mount on the spatial filter to one which is height adjustable and hope this helps.</p>
 
+
+
 <h4 id="144230-01022016">14:42:30-01/02/2016</h4>
 
 <p>I changed the mount on the spatial filter and modified the assembly for the prism pair which seems to help significantly.  The issue is that the height of the beam is so low that I cannot use an adjustable base, so I can only add small spacers to make the height changes.</p>
@@ -1034,5 +1036,34 @@ This should be good enough.</p>
 
 <p>I need to expand and collimate the beam coming out of the innolight laser.  According to Don’s notebook I need 2.152A to get lasing.</p>
 
-<p>Everything is aligned, I need to find a power meter so I can optimize the waveplates and the isolator.  then I should be able to send everything into the fiber.</p></div></body>
+<p>Everything is aligned, I need to find a power meter so I can optimize the waveplates and the isolator.  then I should be able to send everything into the fiber.</p>
+
+<h1 id="222016">2/2/2016</h1>
+
+<p>Looking into the code for our data monitoring, I would like to make a few improvments, namely:</p>
+
+<ul>
+<li>Within each process thread which runs analysis scripts, spawn new process to leverage cpu cores better.  Cap number of running processes and make sure they actually end.  Possibly use zprocess (from Lincoln Turner’s group)</li>
+<li>Abstract routines making them easier to write (some ideas on this below)</li>
+<li>Switch to hdf5 file format for saving images with run information</li>
+<li>Set up local server to store non-image data (save path to images in database, file system is correct place to store image data)</li>
+</ul>
+
+<p>Some thoughts on routine abstractions: <br>
+A routine is composed of three tasks: <br>
+1. Aquiring data and parameters <br>
+2. Performing actions aquired data and parameters <br>
+3. Returning results</p>
+
+<p>The main thread should not care or know about anything to do with 2 and only needs to know a priori about the type of results returned.  Lets make the further limiting assumption that data will always be in the form on a numpy array (numerical values) in some dimension and that parameters can be represented as a dictionary.    </p>
+
+<p>So we have a Procedure class which needs to expose to the GUI the input parameters and their types and the return dictionary with types.  Lets also assume for now that the return dictionary will be composed of parameters bound to numerical arrays.  </p>
+
+<p>Parameters need to be divided into user input and program input, by this I mean input that needs to come directly from the user (although can and will be initialized with reasonable defaults) such as fitting parameters as opposed to parameters that come from the program such as index name.  </p>
+
+<p>User will generate procedure objects in one of two ways: <br>
+1. Subclassing Procedure and adding things themselves (probably preferred way for control) <br>
+2. Creating routine for data processing and using helper functions within Procedure class to instantiate without subclassing</p>
+
+<p>User will be able to specify procedures to load in the configuration procedure on start, or load them in dynamically.</p></div></body>
 </html>
