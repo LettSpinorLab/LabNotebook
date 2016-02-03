@@ -150,8 +150,6 @@
 <li><ul>
 <li><ul>
 <li><a href="#114431-02022016">11:44:31-02/02/2016</a></li>
-<li><a href="#161936-02022016">16:19:36-02/02/2016</a></li>
-<li><a href="#173028-02022016">17:30:28-02/02/2016</a></li>
 </ul>
 </li>
 </ul>
@@ -1122,7 +1120,33 @@ The following is the properties of the mirror we are using</p>
 
 <p>Hooking up the temperature control unit for the SFG crystal, it requires a cable of a farily normal variety.  I will try to find the exact one we used to sue although I am pretty sure it has no special nature.</p>
 
+
+
 <h4 id="191852-02022016">19:18:52-02/02/2016</h4>
 
-<p>Talked with Don and we realized the intitial phase for the TWA simulations we have been running is <script type="math/tex" id="MathJax-Element-14">\pi</script>.  I want to check and make sure this is consistent with the full quantum simulations.</p></div></body>
+<p>Talked with Don and we realized the intitial phase for the TWA simulations we have been running is <script type="math/tex" id="MathJax-Element-13">\pi</script>.  I want to check and make sure this is consistent with the full quantum simulations.</p>
+
+
+
+<h1 id="232016">2/3/2016</h1>
+
+<h4 id="093949-03022016">09:39:49-03/02/2016</h4>
+
+<p>A few things to do in the Experiment Monitor: <br>
+* Clean up the names of the files, make them uniform and sensible <br>
+* Change the DataTable class implementation to make it faster by using more of a MVC framework on the dataframe at the heart of the experiment.  Also, have a slider which populates the rows as its slid, starting with the latest maybe 20 shots.  Problem with performance when displaying table with 500+ rows and many columns. <br>
+* Integrate database (possible SQLlite) <br>
+* Write tests as much as possible</p>
+
+<p>I have changed the implementation of the data processing.  Before I used a multi-threading approach which allowed did not lock up the central GUI thread while running some analysis procedure (ex. image fit).  However, this does not take advantage of multi-core cpu as the GIL in python prevents more than one thread from executing at once in the same python process.  However, the threads execute asynchronously, so to the user it appears as if the GUI is fully responsive.  This is probably good enough for our purposes, but in case we ever want to run multi analysis routines on each image or do some particularly fancy stuff, I have modified it so each routine is offloaded to a new separate python process, which can run on other cores (this is scheduled by the operatoring system).  There is some cost due to the overhead of starting a new process, but this is well under a second.  The procedure now works like this</p>
+
+<ol>
+<li>Image comes in and processing is moved to a new processing thread. </li>
+<li>From the processing thread, a new python process is initated for each Procedure to be run on the image.</li>
+<li>The results from each procedure are returned to the processing thread.</li>
+<li>The processing thread sends the results to the main thread.</li>
+<li>The processing thread destroys itself.</li>
+</ol>
+
+<p>This system is optimized for our experiment which has a cycle time of 20s.  In this regime, we don’t care about the startup time associated with spawning new processes, but we do care about the true parallelism they offer.</p></div></body>
 </html>
