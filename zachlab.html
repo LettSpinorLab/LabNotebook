@@ -114,6 +114,64 @@
 </li>
 </ul>
 </li>
+<li><a href="#1252016">1/25/2016</a></li>
+<li><a href="#1262016">1/26/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#165351-26012016">16:53:51-26/01/2016</a></li>
+<li><a href="#171844-26012016">17:18:44-26/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#1292016">1/29/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#150622-29012016">15:06:22-29/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#212016">2/1/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#144230-01022016">14:42:30-01/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#222016">2/2/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#114431-02022016">11:44:31-02/02/2016</a></li>
+<li><a href="#161936-02022016">16:19:36-02/02/2016</a></li>
+<li><a href="#173028-02022016">17:30:28-02/02/2016</a></li>
+<li><a href="#191852-02022016">19:18:52-02/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#232016">2/3/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#093949-03022016">09:39:49-03/02/2016</a></li>
+<li><a href="#110534-03022016">11:05:34-03/02/2016</a></li>
+<li><a href="#144544-03022016">14:45:44-03/02/2016</a></li>
+<li><a href="#164643-03022016">16:46:43-03/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -860,20 +918,20 @@ This should be good enough.</p>
 
 
 
-<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">
-</span><span class="kwd">def</span><span class="pln"> tri_ham</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
-    </span><span class="str">'''compute the tridiagonal hamiltonian for fock state'''</span><span class="pln">
-    ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
-    </span><span class="com">#first for diagonal interation</span><span class="pln">
-    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
-        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln">
-    </span><span class="com">#now for interaction with kp = i-1</span><span class="pln">
-    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)):</span><span class="pln">
-        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    </span><span class="com">#now for kp = i +1</span><span class="pln">
-    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">):</span><span class="pln">
-        ans</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre>
+<pre class="prettyprint"><code class="language-python hljs ">
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tri_ham</span><span class="hljs-params">(c,bfield,psi,n_atoms)</span>:</span>
+    <span class="hljs-string">'''compute the tridiagonal hamiltonian for fock state'''</span>
+    ans = np.empty(len(psi), dtype = complex)
+    <span class="hljs-comment">#first for diagonal interation</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(psi)):
+        ans[i] = (i*(<span class="hljs-number">2</span>*(n_atoms-<span class="hljs-number">2</span>*i))-<span class="hljs-number">1</span>)* c/n_atoms*psi[i] + <span class="hljs-number">2</span> * bfield * i*psi[i]
+    <span class="hljs-comment">#now for interaction with kp = i-1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(psi)):
+        ans[i] += i * np.sqrt((n_atoms - <span class="hljs-number">2</span> * (i-<span class="hljs-number">1</span>) - <span class="hljs-number">1</span>)*(n_atoms - <span class="hljs-number">2</span>*(i-<span class="hljs-number">1</span>)))*psi[i-<span class="hljs-number">1</span>]* c/n_atoms
+    <span class="hljs-comment">#now for kp = i +1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(psi)-<span class="hljs-number">1</span>):
+        ans[i] += (i+<span class="hljs-number">1</span>)*np.sqrt((n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>)*(n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">2</span>))*psi[i+<span class="hljs-number">1</span>]* c/n_atoms
+    <span class="hljs-keyword">return</span> ans</code></pre>
 
 <p>The goal for right now is to see if I can implement this same functionality using numpy such that I don’t lost speed and can then run easily on the supercomputer.  The dependencies are currently</p>
 
@@ -899,18 +957,19 @@ This should be good enough.</p>
 
 
 
-<pre class="prettyprint prettyprinted"><code class="language-python"><span class="pln">
-</span><span class="kwd">def</span><span class="pln"> tri_ham_np</span><span class="pun">(</span><span class="pln">c</span><span class="pun">,</span><span class="pln">bfield</span><span class="pun">,</span><span class="pln">psi</span><span class="pun">,</span><span class="pln">n_atoms</span><span class="pun">):</span><span class="pln">
-    </span><span class="str">'''compute the tridiagonal hamiltonian for fock state
-    so we can only use numpy, create arrays of the indices'''</span><span class="pln">
-    ans </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">empty</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">),</span><span class="pln"> dtype </span><span class="pun">=</span><span class="pln"> complex</span><span class="pun">)</span><span class="pln">
-    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[</span><span class="lit">0</span><span class="pun">:</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)]</span><span class="pln">
-    ans </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">*(</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*</span><span class="pln">i</span><span class="pun">))-</span><span class="lit">1</span><span class="pun">)*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms</span><span class="pun">*</span><span class="pln">psi </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> bfield </span><span class="pun">*</span><span class="pln"> i</span><span class="pun">*</span><span class="pln">psi
-    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)]</span><span class="pln">
-    ans</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:]</span><span class="pln"> </span><span class="pun">+=</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">-</span><span class="lit">1</span><span class="pun">)))*</span><span class="pln">psi</span><span class="pun">[:-</span><span class="lit">1</span><span class="pun">]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    i </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">mgrid</span><span class="pun">[:(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">psi</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">)]</span><span class="pln">
-    ans</span><span class="pun">[:-</span><span class="lit">1</span><span class="pun">]+=(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)*</span><span class="pln">np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">((</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">1</span><span class="pun">)*(</span><span class="pln">n_atoms</span><span class="pun">-</span><span class="lit">2</span><span class="pun">*(</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)+</span><span class="lit">2</span><span class="pun">))*</span><span class="pln">psi</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:]*</span><span class="pln"> c</span><span class="pun">/</span><span class="pln">n_atoms
-    </span><span class="kwd">return</span><span class="pln"> ans</span></code></pre>
+<pre class="prettyprint"><code class="language-python hljs ">
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">tri_ham_np</span><span class="hljs-params">(c,bfield,psi,n_atoms)</span>:</span>
+    <span class="hljs-string">'''compute the tridiagonal hamiltonian for fock state
+    so we can only use numpy, create arrays of the indices'''</span>
+    ans = np.empty(len(psi), dtype = complex)
+    i = np.mgrid[<span class="hljs-number">0</span>:len(psi)]
+    ans = (i*(<span class="hljs-number">2</span>*(n_atoms-<span class="hljs-number">2</span>*i))-<span class="hljs-number">1</span>)* c/n_atoms*psi + <span class="hljs-number">2</span> * bfield * i*psi
+    i = np.mgrid[<span class="hljs-number">1</span>:len(psi)]
+    ans[<span class="hljs-number">1</span>:] += i * np.sqrt((n_atoms - <span class="hljs-number">2</span> * (i-<span class="hljs-number">1</span>) - <span class="hljs-number">1</span>)*(n_atoms - <span class="hljs-number">2</span>*(i-<span class="hljs-number">1</span>)))*psi[:-<span class="hljs-number">1</span>]* c/n_atoms
+    i = np.mgrid[:(len(psi)-<span class="hljs-number">1</span>)]
+    ans[:-<span class="hljs-number">1</span>]+=(i+<span class="hljs-number">1</span>)*np.sqrt((n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>)*(n_atoms-<span class="hljs-number">2</span>*(i+<span class="hljs-number">1</span>)+<span class="hljs-number">2</span>))*psi[<span class="hljs-number">1</span>:]* c/n_atoms
+    <span class="hljs-keyword">return</span> ans
+</code></pre>
 
 <p>All code seems to produce equivalent answers and is certainly equivalent mathematically, however, it appears that there is some difference due to machine precision.  After some testing, it appears this difference is acceptable.  </p>
 
@@ -928,7 +987,7 @@ This should be good enough.</p>
 
 <h4 id="163916-22012016">16:39:16-22/01/2016</h4>
 
-<p>I have finished with the code for the cluster, my first try is run a bunch of separate fock state simulations with different <script type="math/tex" id="MathJax-Element-11">q</script> to see if anything interesting comes up, and then compare to the mean field at these values.  Using the cluster is somewhat difficult, but I will share what I have learned so far</p>
+<p>I have finished with the code for the cluster, my first try is run a bunch of separate fock state simulations with different <script type="math/tex" id="MathJax-Element-10">q</script> to see if anything interesting comes up, and then compare to the mean field at these values.  Using the cluster is somewhat difficult, but I will share what I have learned so far</p>
 
 <ul>
 <li>To submit a bunch of jobs, use the bash scripting language to loop over the job submission command.</li>
@@ -977,7 +1036,7 @@ This should be good enough.</p>
 
 <ul>
 <li>Fixed coherent state and fock state simulation agreement, which is now quite excellent as shown in the following plot<img src="https://lh3.googleusercontent.com/-IoN-o9jTwjE/Vqu5ddV2mrI/AAAAAAAAHJA/SmT2av9IDJg/s0/comparefock_coh.png" alt="enter image description here" title="comparefock_coh.png">  This plot also shows the current issue which is not yet resolved, namely that the TWA simulations (designated as mean field here) are not in great agreement.  Really, they should match almost exactly for at least a period.</li>
-<li>Ran simulations for the microwave reversal pulses in the <script type="math/tex" id="MathJax-Element-12">F=1</script> condensate.  These did produce some nice results. <br>
+<li>Ran simulations for the microwave reversal pulses in the <script type="math/tex" id="MathJax-Element-11">F=1</script> condensate.  These did produce some nice results. <br>
 <img src="https://lh3.googleusercontent.com/-2Ao7wgllHEU/Vqu7LvhlYKI/AAAAAAAAHJQ/sxVwD23MWLg/s0/q_n5_pulses.png" alt="enter image description here" title="q_n5_pulses.png">  </li>
 <li>We can also look at the calculation of these minimia and their dependence on the initial time of the pulse. <img src="https://lh3.googleusercontent.com/-KPU4zq3r1s4/Vqu7awhQM-I/AAAAAAAAHJc/b3PC_kj5jyo/s0/q_n5_times.png" alt="enter image description here" title="q_n5_times.png"></li>
 <li>Lastly we found a definite optimal pulse power for the optimal time.<img src="https://lh3.googleusercontent.com/-jBfE6RDdS-0/Vqu7r5FcG7I/AAAAAAAAHJo/BrN_9pXxsm4/s0/microwave_norm.png" alt="enter image description here" title="microwave_norm.png">  Each color represents a different initial time for the microwave pulse and its clear the for each initial time, the optimal reversal phase is essentially the same.</li>
@@ -1081,7 +1140,7 @@ The following is the properties of the mirror we are using</p>
 
 <h4 id="191852-02022016">19:18:52-02/02/2016</h4>
 
-<p>Talked with Don and we realized the intitial phase for the TWA simulations we have been running is <script type="math/tex" id="MathJax-Element-13">\pi</script>.  I want to check and make sure this is consistent with the full quantum simulations.</p>
+<p>Talked with Don and we realized the intitial phase for the TWA simulations we have been running is <script type="math/tex" id="MathJax-Element-12">\pi</script>.  I want to check and make sure this is consistent with the full quantum simulations.</p>
 
 
 
@@ -1133,13 +1192,15 @@ The following is the properties of the mirror we are using</p>
 
 <h4 id="164643-03022016">16:46:43-03/02/2016</h4>
 
-<p>There is 64mW before the fiber (with attenuator on), although not sure how much of that is TEM<script type="math/tex" id="MathJax-Element-16">_{00}</script>.  After the fiber, there is 5.3 mW after some alignment.  I will try to tweak that up now.</p>
+<p>There is 64mW before the fiber (with attenuator on), although not sure how much of that is TEM<script type="math/tex" id="MathJax-Element-14">_{00}</script>.  After the fiber, there is 5.3 mW after some alignment.  I will try to tweak that up now.</p>
 
 <p>I am going to lower the power to 6.7mW (500 mA) which will allow me to not need to use the attenuator. This way I can find the optimal efficiency of the fiber at low power.  Then I can turn up the power.  The issue is that right now I am putting the measurement device right after the fiber, however, when I use the attenuater, much of the light from the fiber is lost.  </p>
 
 <p>I was going to also use the OPHIR power meter, which can handle larger powers (up to 300W), but unfortunately, it does not work anymore.  </p>
 
 <p>I have optimized the ouput to 18% efficiency through the fiber.  This is not necessarily unexpected, however, I want to check with some other people before continuing.  This could be correct because we know the TA output has terrible mode quality.  Steck <em>et al</em> report efficiencies of aroudn 25-35%.  However, Meng has reported efficiency of around 57%.  </p>
+
+
 
 <h4 id="195524-03022016">19:55:24-03/02/2016</h4>
 
@@ -1167,11 +1228,27 @@ The following is the properties of the mirror we are using</p>
 
 <p>Note that some of the plots are drawn using pyqtgraph which is faster still.  In addition, this timing includes figure creation which will add some time compared to updating the plots in the application.</p>
 
+
+
 <h4 id="205928-03022016">20:59:28-03/02/2016</h4>
 
 <p>More thoughts on implementation details <br>
 * Perhaps plot directly from the dataframe convenience commands <br>
 * Add some sort of experiment category instead of just day by day <br>
 * Create plot manager on separate thread (could be QObject) which manages all plots on separate thread and gets sent updated dataframe on each shot.  <br>
-*  Possibly move the ignore shots commands out of visual plotter and into another section so the plotting does not need to worry about this and it can be done in the DataFrame itself.</p></div></body>
+*  Possibly move the ignore shots commands out of visual plotter and into another section so the plotting does not need to worry about this and it can be done in the DataFrame itself.</p>
+
+
+
+<h1 id="232016-1">2/3/2016</h1>
+
+<p>Today I want to get the SFG system all going.  I also need to meet with Arne regarding some simulation stuff he has done.</p>
+
+<h4 id="101532-04022016">10:15:32-04/02/2016</h4>
+
+<p>Currently, I don’t have any power meters which can measure at 1319nm (more accurately, I don’t have any heads), so I will see how sensitive our power meter is at this wavelength.  It may be good enough to optimize the fiber alignment, even if we don’t know exactly how much power we are sending through.  Unfortunately, our power meter (fieldmate) has no sensitivity in that regime which not surprising.  I will need to borrow a head to do this properly.</p>
+
+<h4 id="105220-04022016">10:52:20-04/02/2016</h4>
+
+<p>I have aligned the innolight into the fiber as best as I can without a power measurement.  After group meeting, I will attempt to find a device sensitive at 1319nm.</p></div></body>
 </html>
