@@ -166,6 +166,21 @@
 <li><a href="#110534-03022016">11:05:34-03/02/2016</a></li>
 <li><a href="#144544-03022016">14:45:44-03/02/2016</a></li>
 <li><a href="#164643-03022016">16:46:43-03/02/2016</a></li>
+<li><a href="#195524-03022016">19:55:24-03/02/2016</a></li>
+<li><a href="#205928-03022016">20:59:28-03/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#242016">2/4/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#101532-04022016">10:15:32-04/02/2016</a></li>
+<li><a href="#105220-04022016">10:52:20-04/02/2016</a></li>
+<li><a href="#133348-04022016">13:33:48-04/02/2016</a></li>
+<li><a href="#143942-04022016">14:39:42-04/02/2016</a></li>
 </ul>
 </li>
 </ul>
@@ -1192,7 +1207,7 @@ The following is the properties of the mirror we are using</p>
 
 <h4 id="164643-03022016">16:46:43-03/02/2016</h4>
 
-<p>There is 64mW before the fiber (with attenuator on), although not sure how much of that is TEM<script type="math/tex" id="MathJax-Element-14">_{00}</script>.  After the fiber, there is 5.3 mW after some alignment.  I will try to tweak that up now.</p>
+<p>There is 64mW before the fiber (with attenuator on), although not sure how much of that is TEM<script type="math/tex" id="MathJax-Element-13">_{00}</script>.  After the fiber, there is 5.3 mW after some alignment.  I will try to tweak that up now.</p>
 
 <p>I am going to lower the power to 6.7mW (500 mA) which will allow me to not need to use the attenuator. This way I can find the optimal efficiency of the fiber at low power.  Then I can turn up the power.  The issue is that right now I am putting the measurement device right after the fiber, however, when I use the attenuater, much of the light from the fiber is lost.  </p>
 
@@ -1244,11 +1259,32 @@ The following is the properties of the mirror we are using</p>
 
 <p>Today I want to get the SFG system all going.  I also need to meet with Arne regarding some simulation stuff he has done.</p>
 
+
+
 <h4 id="101532-04022016">10:15:32-04/02/2016</h4>
 
 <p>Currently, I don’t have any power meters which can measure at 1319nm (more accurately, I don’t have any heads), so I will see how sensitive our power meter is at this wavelength.  It may be good enough to optimize the fiber alignment, even if we don’t know exactly how much power we are sending through.  Unfortunately, our power meter (fieldmate) has no sensitivity in that regime which not surprising.  I will need to borrow a head to do this properly.</p>
 
+
+
 <h4 id="105220-04022016">10:52:20-04/02/2016</h4>
 
-<p>I have aligned the innolight into the fiber as best as I can without a power measurement.  After group meeting, I will attempt to find a device sensitive at 1319nm.</p></div></body>
+<p>I have aligned the innolight into the fiber as best as I can without a power measurement.  After group meeting, I will attempt to find a device sensitive at 1319nm.</p>
+
+
+
+<h4 id="133348-04022016">13:33:48-04/02/2016</h4>
+
+<p>Borrowed a head from the Strontium lab which should do the trick.  First I am going to actually measure the output power of the laser after the isolator and the waveplates when optimized to get a good reading.  It takes some time for it warm up to a stable reading and at low power it is not very stable.  After adjustment, it wanders by a few percent.  I will try to give error bars on this plot. <br>
+<img src="https://lh3.googleusercontent.com/-f_D0dmm-ihA/VrOkYJr9mgI/AAAAAAAAHMc/j2eVe5lkIrc/s0/innolightpower.png" alt="enter image description here" title="innolightpower.png"></p>
+
+<p>Clearly, the laser is not stable at lower power, but is stable around 350 mW output.  I will now align this into the fiber.  </p>
+
+<p>Set current to 2.227, so the power is about 63 mW before fiber.  </p>
+
+
+
+<h4 id="145918-04022016">14:59:18-04/02/2016</h4>
+
+<p>I have a meeting with Arne soon, I want to look over his plots and my plots before we meet so I have some idea what going on.</p></div></body>
 </html>
