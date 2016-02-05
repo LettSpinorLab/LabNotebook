@@ -1402,7 +1402,7 @@ I(Innolight) = 2.679 A</p>
 <p>Turned on SFG system, going to take power measurements all day to determine stability.  System on, going to give it a few minutes to warm up</p>
 
 <p>Current settings are  <br>
-T = 6.077k<script type="math/tex" id="MathJax-Element-37">\Omega</script> <br>
+T = 6.077k<script type="math/tex" id="MathJax-Element-52">\Omega</script> <br>
 I(TA) = 2002.0 mA <br>
 I(Innolight) = 2.678 A</p>
 
@@ -1435,6 +1435,10 @@ I(Innolight) = 2.678 A</p>
   <td>9:28</td>
   <td>161</td>
 </tr>
+<tr>
+  <td>11:18</td>
+  <td>163</td>
+</tr>
 </tbody></table>
 
 
@@ -1456,5 +1460,14 @@ I(Innolight) = 2.678 A</p>
 <li>Get Ryan Barnett’s TWA code running on a windows computer (I have it compiled on a linux box I have at home).  The complication is how to include the extra Eigen routines he uses.  I will use visual studio at work and figure this out (although I am considering running linux at work too).</li>
 <li>Figure out the proper distribution to sample from when the state is not vacuum seeded.</li>
 <li>Verify TWA code across all cases.</li>
-</ol></div></body>
+</ol>
+
+
+
+<h4 id="103012-05022016">10:30:12-05/02/2016</h4>
+
+<p>Commands for the code are something like </p>
+
+<pre><code>./TWA --numpoints 1000 --dt 0.0005 --t0 0 --index 1 --navg 8000 --theta0 0 --ntot 10000 --nm 100 --np 100 --qeff -5 --c2n 30 --trev0 60 --trev1 61 --qrev -280 &gt; filename
+</code></pre></div></body>
 </html>
