@@ -180,7 +180,7 @@
 <li><a href="#101532-04022016">10:15:32-04/02/2016</a></li>
 <li><a href="#105220-04022016">10:52:20-04/02/2016</a></li>
 <li><a href="#133348-04022016">13:33:48-04/02/2016</a></li>
-<li><a href="#143942-04022016">14:39:42-04/02/2016</a></li>
+<li><a href="#145918-04022016">14:59:18-04/02/2016</a></li>
 </ul>
 </li>
 </ul>
@@ -1286,5 +1286,103 @@ The following is the properties of the mirror we are using</p>
 
 <h4 id="145918-04022016">14:59:18-04/02/2016</h4>
 
-<p>I have a meeting with Arne soon, I want to look over his plots and my plots before we meet so I have some idea what going on.</p></div></body>
+<p>I have a meeting with Arne soon, I want to look over his plots and my plots before we meet so I have some idea what going on.</p>
+
+<h4 id="175040-04022016">17:50:40-04/02/2016</h4>
+
+<p>Meeting went very well we are going to try to compare our TWA simulations and then work on drawing some conclusions together.  I need to figure out how seed initial states within the TWA framework and code that up.</p>
+
+<p>I am going to take another stab at aligning the SFG system.  I need to get the 1319nm laser into the fiber.</p>
+
+<p>I have aligned it and am getting about 20 mW out of the fiber, although its hard to tell because power fluctatutes so much.  Looking back at Arne’s notebook, it seems he used</p>
+
+<p>Power 1319 = 225 mW <br>
+Power 1064 = 160 mW <br>
+Resistance = 6.255 k<script type="math/tex" id="MathJax-Element-244">\Omega</script>, although this is probably higher now.</p>
+
+<p>So lets first align the TA again as we will need to realign the 1319 system after this.</p>
+
+<p>Then we will align the fiber at 2A input current into the TA.  We will do the following procedure</p>
+
+<ol>
+<li>Align TA through fiber at low power</li>
+<li>Align TA through fiber at high power</li>
+<li>Align 1319 through fiber at low power</li>
+<li>Align 1319 through fiber at high power</li>
+<li>Put into SFG crystal.</li>
+</ol>
+
+<p>In the past we would seed the crystal with the 1319 light before cranking up the TA, so we will also do that here.  Note that this power meter is super slow, so one needs to wait after each adjustment.</p>
+
+<p>Surpisingly, playing with the waveplate before the TA can help get more power through the fiber, this must have to do with the spatial mode coming out of the TA.</p>
+
+<p>Raised TA current to 1A.  I am getting efficiency’s of about 20%.  Arne was getting efficiencies of about 14% at 2A, so we will proceed to 2A.</p>
+
+<p>Arne got 143mW after the fiber, we are at 2000.1 mA of TA current and after the fiber our output is 145 <script type="math/tex" id="MathJax-Element-245">\pm</script> 1 mW.</p>
+
+<p>Now we want to get about 225mW of 1319nm light after the fiber.  We will now set that up.  We will align at successively higher powers and hopefully we get the amount we want out with a reasonable input current.</p>
+
+<p>At 2.678A, getting 219mA after the fiber.  These numbers are comparable to what Arne had.  </p>
+
+<p>Now I am turning on the temperature control from the SFG crystal, everything looks fine, lets give this a try.</p>
+
+<p>GOT LIGHT!!!!</p>
+
+<p>At first only 1.4 mW, optimized temperature to 6.077 k<script type="math/tex" id="MathJax-Element-246">\Omega</script>, I get out 8.5mW.  Big change from the waveplate after the TA.  </p>
+
+
+
+<h4 id="192602-04022016">19:26:02-04/02/2016</h4>
+
+<p>163mW of 589 light!!!!!  </p>
+
+<p>Current settings are  <br>
+T = 6.077k<script type="math/tex" id="MathJax-Element-326">\Omega</script> <br>
+I(TA) = 2001.4 mA <br>
+I(Innolight) = 2.679 A</p>
+
+<p>We will let it sit for a few minutes to get a sense of the stability.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Time</th>
+  <th>Power (mw)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>7:26</td>
+  <td>163</td>
+</tr>
+<tr>
+  <td>7:29</td>
+  <td>158</td>
+</tr>
+<tr>
+  <td>7:31</td>
+  <td>158</td>
+</tr>
+<tr>
+  <td>7:34</td>
+  <td>157</td>
+</tr>
+<tr>
+  <td>7:38</td>
+  <td>157</td>
+</tr>
+<tr>
+  <td>7:41</td>
+  <td>157</td>
+</tr>
+</tbody></table>
+
+
+<p>There are a few things which can be optimized without changing the alignment:</p>
+
+<ul>
+<li>TA current</li>
+<li>Mephisto current</li>
+<li>waveplates (all of them after isolators as changing the TA mode can help)</li>
+<li>Temperature of crystal</li>
+</ul></div></body>
 </html>
