@@ -34,29 +34,6 @@
 </li>
 </ul>
 </li>
-<li><a href="#variac-v2-v3-v4-v5-v6-v7-volts-80-75-25-1-10-40">
-
-
-  (variac)
-  V2
-  V3
-  V4
-  V5
-  V6
-  V7
-
-
-
-  (volts)
-  80
-  75
-  25
-  1
-  10
-  40
-
-
-</a></li>
 </ul>
 </li>
 <li><a href="#1222016">1/22/2016</a><ul>
@@ -70,7 +47,27 @@
 </li>
 </ul>
 </li>
-<li><a href="#1262016">1/26/2016</a></li>
+<li><a href="#1262016">1/26/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#122150-26012016">12:21:50-26/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#1272016">1/27/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#103209-27012016">10:32:09-27/01/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#222016">2/2/2016</a></li>
 </ul>
 </div>
 </p>
@@ -469,6 +466,8 @@ Used S122C head with PM100D to measure lasing threshold of Mephisto.  S122C work
 
 <hr>
 
+
+
 <h1 id="1222016">1/22/2016</h1>
 
 <p>Winter storm starts today at noon.  Expecting possibly over 2 feet of snow.</p>
@@ -497,6 +496,8 @@ rough pump = gray</p>
 
 <p>If there was an interruption to power, the rough pump would turn off, causing the backing pressure to drop, causing the turbo pump to shut down.  But the valves would stay open.  We eventually need to get the rough pump onto blue, or set up a more robust valve system.</p>
 
+
+
 <h4 id="113416-22012016">11:34:16-22/01/2016</h4>
 
 <p>Main Gate Valve = closed</p>
@@ -506,6 +507,8 @@ rough pump = gray</p>
 
 
 <h1 id="1262016">1/26/2016</h1>
+
+
 
 <h4 id="122150-26012016">12:21:50-26/01/2016</h4>
 
@@ -517,6 +520,8 @@ rough pump = gray</p>
 
 
 <h1 id="1272016">1/27/2016</h1>
+
+
 
 <h4 id="103209-27012016">10:32:09-27/01/2016</h4>
 
@@ -556,6 +561,8 @@ rough pump = gray</p>
 <p>The essential code (should be copyable into Mathematica): <br>
 (note energies are in units of angular frequency)</p>
 
+
+
 <pre class="prettyprint"><code class=" hljs tex">dynEqs<span class="hljs-special">[</span>c_, E1_, E0_, 
   En1_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1init_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0init_, <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1init_<span class="hljs-special">]</span> :=
  <span class="hljs-special">{</span>
@@ -581,15 +588,21 @@ rough pump = gray</p>
   <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1<span class="hljs-special">[</span>0<span class="hljs-special">]</span> == <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1init
   <span class="hljs-special">}</span></code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs tex"><span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0_, m_, <span class="hljs-command">\[</span>Chi<span class="hljs-special">]</span>1_<span class="hljs-special">]</span> := 
  E^(I*<span class="hljs-command">\[</span>Chi<span class="hljs-special">]</span>1) Sqrt<span class="hljs-special">[</span>(1 - <span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0 + m)/2<span class="hljs-special">]</span>
 <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0_<span class="hljs-special">]</span> := Sqrt<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">]</span>
 <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>n1initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0_, m_, <span class="hljs-command">\[</span>Chi<span class="hljs-special">]</span>n1_<span class="hljs-special">]</span> := 
  E^(I*<span class="hljs-command">\[</span>Chi<span class="hljs-special">]</span>n1) Sqrt<span class="hljs-special">[</span>(1 - <span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0 - m)/2<span class="hljs-special">]</span></code></pre>
 
+
+
 <pre class="prettyprint"><code class=" hljs tex">en1z = sim<span class="hljs-special">[</span>2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> (qhz<span class="hljs-special">[</span>277<span class="hljs-special">]</span>/qt<span class="hljs-special">[</span>10^-4<span class="hljs-special">]</span>^2)*(bf)^2 + 2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> q<span class="hljs-command">\[</span>Mu<span class="hljs-special">]</span>w<span class="hljs-special">]</span>;
 en0z = 0;
 enn1z = sim<span class="hljs-special">[</span>2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> (qhz<span class="hljs-special">[</span>277<span class="hljs-special">]</span>/qt<span class="hljs-special">[</span>10^-4<span class="hljs-special">]</span>^2)*(bf)^2 + 2 <span class="hljs-command">\[</span>Pi<span class="hljs-special">]</span> q<span class="hljs-command">\[</span>Mu<span class="hljs-special">]</span>w<span class="hljs-special">]</span>;</code></pre>
+
+
 
 <pre class="prettyprint"><code class=" hljs tex"><span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1initz = <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>1initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0init, m, chipinit<span class="hljs-special">]</span>;
 <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initz = <span class="hljs-command">\[</span>Zeta<span class="hljs-special">]</span>0initFrom<span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0<span class="hljs-special">[</span><span class="hljs-command">\[</span>Rho<span class="hljs-special">]</span>0init<span class="hljs-special">]</span>;
@@ -630,6 +643,8 @@ Running the spinor oscillation code repeatedly for these 4000 pairs of {rho0, m}
 
 <p>Again, essential code:</p>
 
+
+
 <pre class="prettyprint"><code class=" hljs lua">twlist = Transpose@Table[
     \[Zeta]<span class="hljs-number">1</span>initz = \[Zeta]<span class="hljs-number">1</span>initFrom\[Rho]<span class="hljs-number">0</span>[tw\[Rho]<span class="hljs-string">[[i]]</span>, twm<span class="hljs-string">[[i]]</span>, 
       tw\[Chi]p<span class="hljs-string">[[i]]</span>];
@@ -650,5 +665,50 @@ Running the spinor oscillation code repeatedly for these 4000 pairs of {rho0, m}
 <img src="https://lh3.googleusercontent.com/LbD-PlXTvi3YNuODhq-rpMeysIYmA1H5nwh3yA6WQWec7ElwT8F9pRaq4ggouQ4poGRA=s1000" alt="enter image description here" title="dpf_SpinorSim_qm15c30theta0n10000samps4000.png"> <br>
 Compare with the full quantum coherent state simulation results from Zach: <br>
 <img src="https://lh3.googleusercontent.com/8DZqxUstVcUfNCWdXLHlnGgJKaaD_uVsjmu1-OkdhEVV4YT828bm3929Lagpnuv4uqtM=s800" alt="enter image description here" title="dpf_SpinorSim_compareQuantum_qm15c30theta0n10000samps4000.png"> <img src="https://lh3.googleusercontent.com/Xf5Hf9qFCanP08g-pseO9oQkMiKD2P6BARLJMeITkjIEQDs7E1y6zOZ_Mwyf780MuYm_=s800" alt="enter image description here" title="dpf_SpinorSim_compareQuantum_zoom_qm15c30theta0n10000samps4000.png"> <br>
-Note that in the right plot, green is the full quantum, blue is Don’s MF sim, and orange is Zach’s old MF sim.  It appears that my MF sim gets the period and amplitude exactly right for the first oscillation, but then becomes worse and worse from the first revival onward.</p></div></body>
+Note that in the right plot, green is the full quantum, blue is Don’s MF sim, and orange is Zach’s old MF sim.  It appears that my MF sim gets the period and amplitude exactly right for the first oscillation, but then becomes worse and worse from the first revival onward.</p>
+
+<hr>
+
+
+
+<h1 id="282016">2/8/2016</h1>
+
+<p>Zach got 589 nm light out of the SFG module.  Getting good power:  155 mW.  Procedure for turning on SFG:</p>
+
+<ol>
+<li>Turn on heater to SFG module.  (Takes ~1 minute to stabilize.)</li>
+<li>Turn Mephisto current up to desired setting (full).</li>
+<li>Turn TA current to 200 mA.</li>
+<li>Remove beam block for seed to TA.</li>
+<li>Turn TA current to 500 mA, check to see if there is yellow light coming out of the SFG module.</li>
+<li>If so, turn TA current to 2000 mA.</li>
+</ol>
+
+<p>After (6), it takes about 10 minutes for the power to stabilize.</p>
+
+<p>Question:  At what temperature for the SFG module should we worry about damaging it?</p>
+
+<p>Current Temp = 6.077 kOhm <br>
+This is probably a 10k (25C) thermistor.  Below is a standard curve: <br>
+<img src="http://www.medteq.info/med/files/Image/NTC10k.png" alt="enter image description here" title=""></p>
+
+<p>So the current temp is about 39.5 C.</p>
+
+<p>The SFG Module (“Wavelength Conversion Module” WS-0589-000-A-B-C from NTT Electronics) manual says that the absolute maximum ratings are:</p>
+
+<p>Operating chip temperature = 80 C <br>
+Operating case temperature = 35 C <br>
+Storage temperature = 65 C <br>
+Input power = 200 mW <br>
+Peltier current = 2 A</p>
+
+<p>From the thermistor curve:  4kOhm = 50 C, so we can go to at least 4kOhm and still be okay.</p>
+
+<p>Degassing Ti Sub pumps (TSP) filaments: <br>
+Agilent manual (not our filaments necessarily) suggests 37-42 A for more than 1 minute. <br>
+We will do 38 A for 1 minute on each.</p>
+
+<p>Degassing finished.  Here are the corresponding pressure spikes:</p>
+
+<p><img src="https://lh3.googleusercontent.com/bySfEevkBtXX0l87t7s4kaNmdYyQMhd30u9Som3e6-axcREsRO4P3dcJjhMG4B7Btzb-=s0" alt="enter image description here" title="dpf_image_2016020800.png"></p></div></body>
 </html>
