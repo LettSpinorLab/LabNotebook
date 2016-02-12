@@ -203,6 +203,28 @@
 </li>
 </ul>
 </li>
+<li><a href="#282016">2/8/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#095454-08022016">09:54:54-08/02/2016</a></li>
+<li><a href="#103146-08022016">10:31:46-08/02/2016</a></li>
+<li><a href="#130318-08022016">13:03:18-08/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2112016">2/11/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#132949-11022016">13:29:49-11/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -1541,7 +1563,11 @@ I(Innolight) = 2.678 A</p>
 <li>TEC for SFG off</li>
 </ul>
 
+
+
 <h1 id="282016">2/8/2016</h1>
+
+
 
 <h4 id="095454-08022016">09:54:54-08/02/2016</h4>
 
@@ -1549,12 +1575,14 @@ I(Innolight) = 2.678 A</p>
 
 <p>Many of the screws are pretty bad, I am going to replace them with proper screws (and washers).  In the old setup, the lowered the beam from the output to the rest of the optics with a few mirrors after the output of the SFG.  I believe this was to integrate the system into the old dye laser system.  We will <em>not</em> do this.   We will raise all the optics to the same height and replace the smaller bases with larger ones for better stability.</p>
 
+
+
 <h4 id="103146-08022016">10:31:46-08/02/2016</h4>
 
 <p>Turned on SFG system</p>
 
 <p>Current settings are  <br>
-T = 6.078k<script type="math/tex" id="MathJax-Element-47">\Omega</script> <br>
+T = 6.078k<script type="math/tex" id="MathJax-Element-21">\Omega</script> <br>
 I(TA) = 2002.0 mA <br>
 I(Innolight) = 2.678 A</p>
 
@@ -1566,8 +1594,197 @@ I(Innolight) = 2.678 A</p>
 
 <p>System output is like 155mW.  </p>
 
-<p>Checked the typical characteristics of a 10<script type="math/tex" id="MathJax-Element-57">k\Omega</script>, given by the curve below <br>
+<p>Checked the typical characteristics of a 10<script type="math/tex" id="MathJax-Element-22">k\Omega</script>, given by the curve below <br>
 <img src="http://www.medteq.info/med/files/Image/NTC10k.png" alt="enter image description here" title=""></p>
 
-<p>Thus our current temperature should be fine.</p></div></body>
+<p>Thus our current temperature should be fine.</p>
+
+<p>Found new maximum output power for the TEC at 6.046 <script type="math/tex" id="MathJax-Element-23">k\Omega</script>.  At long as we are above around <script type="math/tex" id="MathJax-Element-24">k\Omega</script>, would should be okay.</p>
+
+<p>We are now going to fire the TI sublimation pumps and outgas them in preparation for the cool down in the next few days.</p>
+
+<p>Quote from the manual</p>
+
+<pre><code>Rough pump the system to a pressure below 10-2 Torr/mbar range and outgas each new filament in turn at a current of 37 to 42 A for at least 1 minute. 
+</code></pre>
+
+<p>We will run 38A for 1.5 minutes.  I have increased the data taking pace, so we should get a reading every 15 seconds or so. </p>
+
+
+
+<h1 id="2112016">2/11/2016</h1>
+
+<p>For the past few days I have worked on the simulations whose details will be in the report which I will link to.</p>
+
+
+
+<h4 id="132949-11022016">13:29:49-11/02/2016</h4>
+
+<p>I am aligning the repump laser optics and I need to figure out the proper settings for each of the three AOM drivers which comprise the setup.</p>
+
+
+
+<h1 id="2122016">2/12/2016</h1>
+
+
+
+<h4 id="093811-12022016">09:38:11-12/02/2016</h4>
+
+<p>I am going to use a scope to characterize each of the 5 AOM drivers for the laser systems in terms of both their output power and frequency at each of the settings on the driver.  For ones which have more control, its just to make sure they work.</p>
+
+<p>I am going to use a 20 dB attenuator with the proper 50 <script type="math/tex" id="MathJax-Element-25">\Omega</script> termination.</p>
+
+
+
+<h4 id="145428-12022016">14:54:28-12/02/2016</h4>
+
+<p>Lowered temperatures in system (see Don’s notebook for details).</p>
+
+<p>I measured each of the AOM drivers used in the laser system and the frequencies they are <em>approximately</em> set  at  are as follows (note they could have been changed during the move).</p>
+
+<table>
+<thead>
+<tr>
+  <th>AOM</th>
+  <th>Freq (MHz)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>699</td>
+  <td>80</td>
+</tr>
+<tr>
+  <td>Cooling</td>
+  <td>41</td>
+</tr>
+<tr>
+  <td>Imaging</td>
+  <td>90.3</td>
+</tr>
+<tr>
+  <td>Dark Spot</td>
+  <td>81.35</td>
+</tr>
+<tr>
+  <td>Zeeman Cooling</td>
+  <td>250.2</td>
+</tr>
+</tbody></table>
+
+
+<p>Some additional notes are:</p>
+
+<ul>
+<li>Cooling AOM had bad waveform</li>
+<li>Dark spot repump indicator light is broken.  I left it in what should be the off position, but make sure to plug in to AOM before turning on.</li>
+</ul>
+
+<p>I made a very detailed measurement of the power of the 699 AOM, so I will list it here for convenience</p>
+
+<table>
+<thead>
+<tr>
+  <th>699 Freq Control</th>
+  <th>Freq (MHz)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>0.0</td>
+  <td>48.4</td>
+</tr>
+<tr>
+  <td>0.5</td>
+  <td>50.84</td>
+</tr>
+<tr>
+  <td>1.0</td>
+  <td>54.59</td>
+</tr>
+<tr>
+  <td>1.5</td>
+  <td>55.76</td>
+</tr>
+<tr>
+  <td>2.0</td>
+  <td>58.26</td>
+</tr>
+<tr>
+  <td>2.5</td>
+  <td>60.71</td>
+</tr>
+<tr>
+  <td>3.0</td>
+  <td>63.18</td>
+</tr>
+<tr>
+  <td>3.5</td>
+  <td>65.68</td>
+</tr>
+<tr>
+  <td>4.0</td>
+  <td>68.15</td>
+</tr>
+<tr>
+  <td>4.5</td>
+  <td>70.62</td>
+</tr>
+<tr>
+  <td>5.0</td>
+  <td>73.09</td>
+</tr>
+<tr>
+  <td>5.5</td>
+  <td>75.6</td>
+</tr>
+<tr>
+  <td>6.0</td>
+  <td>78.18</td>
+</tr>
+<tr>
+  <td>6.5</td>
+  <td>80.66</td>
+</tr>
+<tr>
+  <td>7.0</td>
+  <td>83.12</td>
+</tr>
+<tr>
+  <td>7.5</td>
+  <td>85.54</td>
+</tr>
+<tr>
+  <td>8.0</td>
+  <td>87.77</td>
+</tr>
+<tr>
+  <td>8.5</td>
+  <td>90.33</td>
+</tr>
+<tr>
+  <td>9.0</td>
+  <td>92.91</td>
+</tr>
+</tbody></table>
+
+
+<p>and it is plotted with a fitted line <br>
+ <img src="https://lh3.googleusercontent.com/-4vOIUI3eUVA/Vr5NoBZ8-tI/AAAAAAAAHOk/qk2F7EZ-q9I/s0/fit_res.png" alt="enter image description here" title="fit_res.png"> <br>
+Which gives the result </p>
+
+<pre><code>    [[Model]]
+        Model(linear)
+    [[Fit Statistics]]
+        # function evals   = 8
+        # data points      = 19
+        # variables        = 2
+        chi-square         = 1.487
+        reduced chi-square = 0.087
+    [[Variables]]
+        slope:       4.91694736 +/- 0.024778 (0.50%) (init= 4.9)
+        intercept:   48.5784744 +/- 0.130528 (0.27%) (init= 48)
+    [[Correlations]] (unreported correlations are &lt;  0.100)
+        C(slope, intercept)          = -0.854 
+</code></pre>
+
+<p>Now I will try to figure out our entire cooling and trapping scheme so it can be implemented correctly.</p></div></body>
 </html>
