@@ -225,6 +225,17 @@
 </li>
 </ul>
 </li>
+<li><a href="#2122016">2/12/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#093811-12022016">09:38:11-12/02/2016</a></li>
+<li><a href="#145428-12022016">14:54:28-12/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -1786,5 +1797,85 @@ Which gives the result </p>
         C(slope, intercept)          = -0.854 
 </code></pre>
 
-<p>Now I will try to figure out our entire cooling and trapping scheme so it can be implemented correctly.</p></div></body>
+<p>Now I will try to figure out our entire cooling and trapping scheme so it can be implemented correctly.</p>
+
+
+
+<h1 id="2152016">2/15/2016</h1>
+
+<p>I looked at the pressure data as we cool down the system.  At the moment, we have not quite reached room temperature, but I have fit the data to an exponential. <br>
+<img src="https://lh3.googleusercontent.com/-GhFhy1rM9y0/VsIOrLGjqQI/AAAAAAAAHQc/dQ9KzlZnb7s/s0/bakeplot.png" alt="bakedata" title="bakeplot.png"></p>
+
+<p>The fit is fairly good, however, the pressure appears to still be going down nicely.  We are about a factor of two better than before we started baking for a month, so hopefully we will get down a bit further as the system cools down another 10 degrees or so.  This should leave us optimistically in the high <script type="math/tex" id="MathJax-Element-26">10^{-10}</script> Torr range.  After applying the TI sublimation pumps we may be able to get another factor of 2-4 putting us at the edge of what we might be able to work with.</p>
+
+<p>I think the temperatures we are seeing in the system are a result of the ion gauge heating up the main chamber, thus, we are approximately as cold as we will be running (although this gauge will not be on during experimentation).  We may go down a few degrees when the foil is removed.</p>
+
+
+
+<h4 id="133532-15022016">13:35:32-15/02/2016</h4>
+
+<p>On the advice of Eite, I wrapped the code to compute the spinor evolution in a more efficient eigenvalue solver.  The Hamiltonian is symmetric and tridiagonal, so there is a very efficient solver in LAPACK implementing a very fast algorithm for this case.  It is quoted to be about <script type="math/tex" id="MathJax-Element-27">O(n^2)</script> as opposed to <script type="math/tex" id="MathJax-Element-28">O(n^3)</script> of the general symmetric hamiltonian solver implemented in scipy.  Wrapping the routine is slightly non-trivial as it requires using cython to interface to underlying C code and fortran routines, but the ipython notebook makes it somewhat easy.  The cython code neded is</p>
+
+
+
+<pre class="prettyprint"><code class="language-python hljs ">
+%%cython 
+<span class="hljs-keyword">import</span> ctypes
+cimport cython
+<span class="hljs-keyword">from</span> scipy.linalg.cython_lapack cimport dstegr
+cimport numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-decorator">@cython.boundscheck(False)</span>
+<span class="hljs-decorator">@cython.wraparound(False)</span>
+cpdef eig_l(np.ndarray[np.float_t,ndim=<span class="hljs-number">1</span>] D, np.ndarray[np.float_t,ndim=<span class="hljs-number">1</span>] E):
+    cdef:
+        char JOBZ = <span class="hljs-string">'V'</span>
+        char RANGE = <span class="hljs-string">'A'</span>
+        int N = D.shape[<span class="hljs-number">0</span>]
+        double VL = <span class="hljs-number">0.0</span>
+        double VU = <span class="hljs-number">100.9</span>
+        int IL = <span class="hljs-number">0</span>
+        int IU = <span class="hljs-number">100</span>
+        double ABSTOL = <span class="hljs-number">47</span>
+        int M = D.shape[<span class="hljs-number">0</span>]
+        int LDZ = N
+        np.ndarray[int, ndim=<span class="hljs-number">1</span>] ISUPPZ = np.zeros(<span class="hljs-number">2</span>*M,dtype=ctypes.c_int) 
+        np.ndarray[np.double_t, ndim=<span class="hljs-number">1</span>] W = np.zeros(N) 
+        np.ndarray[np.double_t, ndim=<span class="hljs-number">2</span>] Z = np.zeros((N,N),order=<span class="hljs-string">"F"</span>)
+        int LWORK = <span class="hljs-number">18</span>*N
+        np.ndarray[np.double_t, ndim=<span class="hljs-number">1</span>] WORK = np.zeros(LWORK) 
+        int LIWORK = <span class="hljs-number">10</span>*N
+        np.ndarray[int, ndim=<span class="hljs-number">1</span>] IWORK = np.zeros(LIWORK,ctypes.c_int)
+        int INFO 
+    dstegr(&amp;JOBZ,&amp;RANGE,&amp;N,&amp;D[<span class="hljs-number">0</span>],&amp;E[<span class="hljs-number">0</span>],&amp;VL,&amp;VU,&amp;IL,&amp;IU,&amp;ABSTOL,
+           &amp;M,&amp;W[<span class="hljs-number">0</span>],&amp;Z[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],&amp;LDZ,&amp;ISUPPZ[<span class="hljs-number">0</span>],&amp;WORK[<span class="hljs-number">0</span>],&amp;LWORK,&amp;IWORK[<span class="hljs-number">0</span>],
+           &amp;LIWORK,&amp;INFO)   
+    <span class="hljs-keyword">return</span> W,Z</code></pre>
+
+<p>and the python code to call this function in an analogous way to the old eigenvalues function</p>
+
+
+
+<pre class="prettyprint"><code class="language-python hljs ">
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">new_eig</span><span class="hljs-params">(mat)</span>:</span>
+    d = np.diagonal(mat)
+    e = np.zeros(len(d))
+    e[:-<span class="hljs-number">1</span>] = np.diagonal(mat,offset=<span class="hljs-number">1</span>)
+    e = e.copy(order=<span class="hljs-string">'C'</span>)
+    d = d.copy(order=<span class="hljs-string">'C'</span>)
+    <span class="hljs-keyword">return</span> eig_l(d,e)
+</code></pre>
+
+<p>Wrapping the LAPACK routines like this could be very useful for other applications.   Using these routines allows us to do the full quantum calculations for 40000 atoms in a few minutes.</p>
+
+<p>Timing gives that the new diagonalization routine runs in about <script type="math/tex" id="MathJax-Element-34">O(n^{2.6})</script>  and the old one in about <script type="math/tex" id="MathJax-Element-35">O(n^3)</script>.  </p>
+
+<h1 id="2172016">2/17/2016</h1>
+
+<p>The system has reached equilibrium, so it is time to fire the TI sublimation pumps.</p>
+
+<p>Now that we have figured out the approximate frequency settings for the six AOM’s used in the cooling and repump systems, we will work through the set up here in an attempt to make sure everything is as it should be.</p>
+
+<p>The cooling is done on the <script type="math/tex" id="MathJax-Element-37">D_2 \  ^3S_{1/2}|F=2,m_F=2\rangle\to ^3P_{3/2}|F=3,m_F=3\rangle</script> transition </p></div></body>
 </html>
