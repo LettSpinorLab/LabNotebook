@@ -270,6 +270,30 @@
 </li>
 </ul>
 </li>
+<li><a href="#2222016">2/22/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#133059-22022016">13:30:59-22/02/2016</a></li>
+<li><a href="#152258-22022016">15:22:58-22/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2232016">2/23/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#105845-23022016">10:58:45-23/02/2016</a></li>
+<li><a href="#114656-23022016">11:46:56-23/02/2016</a></li>
+<li><a href="#141150-23022016">14:11:50-23/02/2016</a></li>
+<li><a href="#182232-23022016">18:22:32-23/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -1379,7 +1403,7 @@ The following is the properties of the mirror we are using</p>
 
 <p>I am going to take another stab at aligning the SFG system.  I need to get the 1319nm laser into the fiber.</p>
 
-<p>I have aligned it and am getting about 20 mW out of the fiber, although its hard to tell because power fluctatutes so much.  Looking back at Arne’s notebook, it seems he used</p>
+<p>I have aligned it and am getting about 20 mW out of the fiber, although its hard to tell because power fluctuates so much.  Looking back at Arne’s notebook, it seems he used</p>
 
 <p>Power 1319 = 225 mW <br>
 Power 1064 = 160 mW <br>
@@ -1399,7 +1423,7 @@ Resistance = 6.255 k<span class="MathJax_SVG" id="MathJax-Element-14-Frame" tabi
 
 <p>In the past we would seed the crystal with the 1319 light before cranking up the TA, so we will also do that here.  Note that this power meter is super slow, so one needs to wait after each adjustment.</p>
 
-<p>Surpisingly, playing with the waveplate before the TA can help get more power through the fiber, this must have to do with the spatial mode coming out of the TA.</p>
+<p>Surprisingly, playing with the waveplate before the TA can help get more power through the fiber, this must have to do with the spatial mode coming out of the TA.</p>
 
 <p>Raised TA current to 1A.  I am getting efficiency’s of about 20%.  Arne was getting efficiencies of about 14% at 2A, so we will proceed to 2A.</p>
 
@@ -1911,7 +1935,7 @@ cpdef eig_l(np.ndarray[np.float_t,ndim=<span class="hljs-number">1</span>] D, np
 
 <p>The system has reached equilibrium, so it is time to fire the TI sublimation pumps.  The instructions say to run the current at 46-48 A for a time period not exceeding five minutes.  Our procedure will be to run each filament at 47 A for 1.5 minutes with at least five minute breaks in between.  Hopefully this will get our pressure down a bit.  I will also increase the rate of data taking so we can watch more closely as it occurs.</p>
 
-<p>The following table with give the times of fireing for each of the TI pumps</p>
+<p>The following table with give the times of firing for each of the TI pumps</p>
 
 <table>
 <thead>
@@ -2057,15 +2081,19 @@ I(Innolight) = 2.678 A</p>
 <h1 id="2222016">2/22/2016</h1>
 
 <p>Turned on SFG system, settings: <br>
-T = 6.077k<span class="MathJax_SVG" id="MathJax-Element-94-Frame" tabindex="0" style="font-size: 100%; display: inline-block; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi mathvariant=&quot;normal&quot;>&amp;#x03A9;</mi></math>" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.678ex" height="2.094ex" viewBox="0 -799.9 722.5 901.7" role="img" focusable="false" style="vertical-align: -0.236ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-3A9" x="0" y="0"></use></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Ω</mi></math></span></span><script type="math/tex" id="MathJax-Element-94">\Omega</script> <br>
+T = 6.077k<span class="MathJax_SVG" id="MathJax-Element-42-Frame" tabindex="0" style="font-size: 100%; display: inline-block; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi mathvariant=&quot;normal&quot;>&amp;#x03A9;</mi></math>" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.678ex" height="2.094ex" viewBox="0 -799.9 722.5 901.7" role="img" focusable="false" style="vertical-align: -0.236ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-3A9" x="0" y="0"></use></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Ω</mi></math></span></span><script type="math/tex" id="MathJax-Element-42">\Omega</script> <br>
 I(TA) = 2000mA <br>
 I(Innolight) = 2.678 A</p>
 
 <p>Unfortunately, I cannot find the amplifier, but the output right now is microwatts to an AOM which is rated for hundreds of milliwatts.  As expected, when changing the output power on the signal generator, the power diffracted into the first order went up, so the AOM is working fine and everything is how it should be.  The likely cause is that the signal generator cannot output enough power and a fixed amplifier was used requiring an output power of -10dBm from the generator.  I will attempt to find the manual to see if this is the case.  It appears as if the maximum output power is around 13 dBm which is 19.95 mW, thus the amplifier theory is probably correct.  I will spend some time later trying to find said amplifier.</p>
 
+
+
 <h4 id="133059-22022016">13:30:59-22/02/2016</h4>
 
-<p>Added a 33dBm amplifier, so we should be able to up to -4dBm on the generator and stay safetley below 900mW of output power.  This rating is for the 200 MHz AOM, not the 250 MHz AOM, so it is likely we actually have even more leeway.  </p>
+<p>Added a 33dBm amplifier, so we should be able to up to -4dBm on the generator and stay safely below 900mW of output power.  This rating is for the 200 MHz AOM, not the 250 MHz AOM, so it is likely we actually have even more leeway.  </p>
+
+
 
 <h4 id="152258-22022016">15:22:58-22/02/2016</h4>
 
@@ -2077,9 +2105,59 @@ I(Innolight) = 2.678 A</p>
 
 <h1 id="2232016">2/23/2016</h1>
 
-<p>Didn’t realize that the beatnote photodiode is so large when designing the spectroscopy setup and thus the rearrangment of the SFG system setup to accomadate a potential future spatial filter has thrown off the design.  Thus I will have to replan the setup. </p>
+<p>Didn’t realize that the beatnote photodiode is so large when designing the spectroscopy setup and thus the rearrangement of the SFG system setup to accommodate a potential future spatial filter has thrown off the design.  Thus I will have to replan the setup. </p>
+
+
 
 <h4 id="105845-23022016">10:58:45-23/02/2016</h4>
 
-<p>After shutting down the NPphotonics laser for the night, it is running at a more normal power (65mW as compared to 70mW), so this higher power could be caused by running it in current mode which is not how we generally run it.</p></div></body>
+<p>After shutting down the NPphotonics laser for the night, it is running at a more normal power (65mW as compared to 70mW), so this higher power could be caused by running it in current mode which is not how we generally run it.</p>
+
+
+
+<h4 id="114656-23022016">11:46:56-23/02/2016</h4>
+
+<p>Spectroscopy setup is placed on the table, after lunch will turn on lasers and try to align it.  Plan for alignment is </p>
+
+<ol>
+<li>Alignment saturation absorption experiment</li>
+<li>Lock cooling laser with lock-in amplifier set up.</li>
+<li>Align lasers to beatnote diode</li>
+<li>Attempt to lock all lasers</li>
+</ol>
+
+
+
+<h4 id="141150-23022016">14:11:50-23/02/2016</h4>
+
+<p>Turning on SHG system, running with 3100 mA current. </p>
+
+
+
+<h4 id="182232-23022016">18:22:32-23/02/2016</h4>
+
+<p>Have the system aligned without the double pass to dither the frequency, so I will instead dither it with the laser itself and then trigger off this to make sure I can see the general absorption feature.  </p>
+
+
+
+<h1 id="2242016">2/24/2016</h1>
+
+<p>We are rebaking and the temperature seems a bit too hot in the chambers (160), so I am lowering the relevant variac by 5.</p>
+
+<table>
+<thead>
+<tr>
+  <th>V2</th>
+  <th>V3</th>
+  <th>V4</th>
+  <th>V7</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>85</td>
+  <td>70</td>
+  <td>90</td>
+  <td>40</td>
+</tr>
+</tbody></table></div></body>
 </html>
