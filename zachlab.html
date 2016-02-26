@@ -294,6 +294,17 @@
 </li>
 </ul>
 </li>
+<li><a href="#2242016">2/24/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#192400-24022016">19:24:00-24/02/2016</a></li>
+<li><a href="#194255-24022016">19:42:55-24/02/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -2166,6 +2177,8 @@ I(Innolight) = 2.678 A</p>
 </tbody></table>
 
 
+
+
 <h4 id="194255-24022016">19:42:55-24/02/2016</h4>
 
 <p>Raised it back up </p>
@@ -2185,5 +2198,84 @@ I(Innolight) = 2.678 A</p>
   <td>90</td>
   <td>40</td>
 </tr>
-</tbody></table></div></body>
+</tbody></table>
+
+
+
+
+<h1 id="2252016">2/25/2016</h1>
+
+<h4 id="141324-25022016">14:13:24-25/02/2016</h4>
+
+<p>I want to heat up the sodium cell, I am using a variac and some heat tape to keep it hot.  I would like it to get up to something like 50 C.  I will make a table of Variac setting and temperature at steady state.  I am measuring at the very end of the cell so I would say this is a lower limit. </p>
+
+<table>
+<thead>
+<tr>
+  <th>Variac Setting</th>
+  <th>Temperature (C)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>0</td>
+  <td>20.4</td>
+</tr>
+<tr>
+  <td>Lo</td>
+  <td>32.4</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>43.2</td>
+</tr>
+</tbody></table>
+
+
+<h4 id="155841-25022016">15:58:41-25/02/2016</h4>
+
+<p>The spectroscopy will setup before the other systems are fully aligned.  I am going to put in permanent pinholes (two for each setup) such that we can easily realign the beam into the spectroscopy without realigning the spectroscopy itself.  </p>
+
+
+
+<h4 id="162733-25022016">16:27:33-25/02/2016</h4>
+
+<p>I have fiber coupled the system to the Burleigh wavemeter which I will try to get working so I can get the laser at roughly the right frequency (enough to see features).  I have coupled the light into the wavemeter, but it doesn’t seem to work. I keep getting a range error.  This could mean that the wavemeter became misaligned during the move.</p>
+
+<h1 id="2262016">2/26/2016</h1>
+
+<p>Coded up the abilitity to do arbitrary state preparation in the full quantum simulation.  Plan is to solve for the eigenvalues and eigenvectors of all potential states for 10k atoms, c=30,q=-5, then I can prepare the state and evolve however I feel like (the evolution scales pretty well as its just matrix multiplication).</p>
+
+<h4 id="131308-26022016">13:13:08-26/02/2016</h4>
+
+<p>Removing NIST data and doing fresh install of windows on analysis computer, then I will be able to run the lasers off this computer temporarily and the pressure monitoring will have no lapses.  Bake is having some odd behavior as the pressure does not seem to stop rising even though the temperature is constant.</p>
+
+<p>When re-installing windows I had to change the BIOS to not use the RAID configuration on the hard drive.  This is something I remember needing to do on other computers and I think it has something to do with the way NIST sets up the computers.  It can be changed back after install.</p>
+
+<h4 id="150515-26022016">15:05:15-26/02/2016</h4>
+
+<p>Windows in installed and laser is working from control by this computer.  I have moved the fiber to be in an easier spot to measure both the repump and and cooling lasers.  I am going to put in the flip mirrors and try to get the fiber re-aligned.  I have put in a lens on a translation stage to help match the fiber mode.</p>
+
+<p>Got the wavemeter working.  It reads 16973.34 cm<span class="MathJax_SVG" id="MathJax-Element-81-Frame" tabindex="0" style="font-size: 100%; display: inline-block; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msup><mi></mi><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#x2212;</mo><mn>1</mn></mrow></msup></math>" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.333ex" height="2.21ex" viewBox="0 -899.7 1004.4 951.6" role="img" focusable="false" style="vertical-align: -0.12ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g transform="translate(0,362)"><use transform="scale(0.707)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-31" x="778" y="0"></use></g></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi></mi><mrow class="MJX-TeXAtom-ORD"><mo>−</mo><mn>1</mn></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-81">^{-1}</script> which corresponds to 589.16 nm.  The <span class="MathJax_SVG" id="MathJax-Element-82-Frame" tabindex="0" style="font-size: 100%; display: inline-block; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msub><mi>D</mi><mn>2</mn></msub></math>" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.979ex" height="2.326ex" viewBox="0 -750.1 1282.4 1001.4" role="img" focusable="false" style="vertical-align: -0.584ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMATHI-44" x="0" y="0"></use><use transform="scale(0.707)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-32" x="1171" y="-213"></use></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>D</mi><mn>2</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-82">D_2</script> line is at 589.1583264 nm, so  this is within .01 cm<span class="MathJax_SVG" id="MathJax-Element-83-Frame" tabindex="0" style="font-size: 100%; display: inline-block; position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><msup><mi></mi><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#x2212;</mo><mn>1</mn></mrow></msup></math>" role="presentation"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.333ex" height="2.21ex" viewBox="0 -899.7 1004.4 951.6" role="img" focusable="false" style="vertical-align: -0.12ex;" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g transform="translate(0,362)"><use transform="scale(0.707)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2212" x="0" y="0"></use><use transform="scale(0.707)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-31" x="778" y="0"></use></g></g></svg><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi></mi><mrow class="MJX-TeXAtom-ORD"><mo>−</mo><mn>1</mn></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-83">^{-1}</script> or about a third of a GHz.  So this should be good enough to do the absorbtion spectroscopy if the cell is hot enough.</p>
+
+<p>I have a signal, but it is terrible, I am going to try heating the cell hotter in order to increase the density.  This may help.</p>
+
+<h4 id="165853-26022016">16:58:53-26/02/2016</h4>
+
+<p>Cell is still too cold at 60, I am going to heat it to around 100, looking at the density plots in Steck’s notes, this seems to be a decent temperature for this experiment at least in comparison with Rubidium where one does not have to heat the cell.  Turned the variac up to 5.5.</p>
+
+<p>I am going to scan the current now between 270 and 290 mA and the temperature between 20 and 22 C to try to see a fluorescence flash.</p>
+
+
+
+<h4 id="182347-26022016">18:23:47-26/02/2016</h4>
+
+<p>Didn’t get it today, will try again tomorrow.</p>
+
+<ul>
+<li>Laser Off</li>
+<li>DL PRO off</li>
+<li>Turned off variac to cell since I am not sure how hot it will get eventually.  I will characterize this better tomorrow.</li>
+</ul>
+
+<p>Ion current at 3.1e-4.  Pressure is looking a bit better.</p></div></body>
 </html>
