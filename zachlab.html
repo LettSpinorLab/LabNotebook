@@ -2445,9 +2445,7 @@ I(Innolight) = 2.678 A</p>
 
 
 
-<h1 id="2302016">2/30/2016</h1>
-
-
+<h1 id="312016">3/1/2016</h1>
 
 <h4 id="092643-01032016">09:26:43-01/03/2016</h4>
 
@@ -2459,5 +2457,81 @@ I(Innolight) = 2.678 A</p>
 
 <h4 id="143002-01032016">14:30:02-01/03/2016</h4>
 
-<p>Power outage at around 2 pm, had to turn off ion pump since the current spiked, lost vacuum completely.   The issue was that the gate valve did not close when the power went out and the backing pump for the turbo shut off.  Ideally, I would have just closed the gate valve, but I could not see and the ion pump was already dangerously high, it could not have pumped down the system.</p></div></body>
+<p>Power outage at around 2 pm, had to turn off ion pump since the current spiked, lost vacuum completely.   The issue was that the gate valve did not close when the power went out and the backing pump for the turbo shut off.  Ideally, I would have just closed the gate valve, but I could not see and the ion pump was already dangerously high, it could not have pumped down the system.</p>
+
+
+
+<h1 id="322016">3/2/2016</h1>
+
+
+
+<h4 id="104924-02032016">10:49:24-02/03/2016</h4>
+
+<p>Setting up double pass AOM for the lock in amplification of the saturated absorption spectroscopy.  </p>
+
+<p>Here is the circuit for the laser lock box. <br>
+<img src="https://lh3.googleusercontent.com/VAgw1JAd7JE23DrDdZQa4IAM1ux5MFvJwnfcfZEg7C0Vxpuhimdn7ZOH_6ELS3WmjhF8=s0" alt="enter image description here" title="20160302_124404.jpg"></p>
+
+<p>So the lock-in amplifier output goes to E, the DC offset to DC, and the output to the laser analog channel.  The integrator output goes to the scope.</p>
+
+
+
+<h1 id="332016">3/3/2016</h1>
+
+<p>Gave talk today about simulating Spinor Dynamics.</p>
+
+<h4 id="131340-03032016">13:13:40-03/03/2016</h4>
+
+<p>I am noticing interference peaks on the photodiode.  I am wondering what these are.  I am going to send the other laser into the spectroscopy system to see if it might have something to do with the optics.</p>
+
+<p>Turned on SFG system, settings: <br>
+T = 6.077k<script type="math/tex" id="MathJax-Element-59">\Omega</script> <br>
+I(TA) = 2000mA <br>
+I(Innolight) = 2.678 A</p>
+
+<p>I have determined the diffraction is not due to the glass cell by removing it.  It could be due to the laser having terrible output (I know its single mode).</p>
+
+
+
+<h4 id="151921-03032016">15:19:21-03/03/2016</h4>
+
+<p>Need to re-align double pass AOM, it looks terrible.  Finished doing this, beam profile is much better.  I have a nice signal, but it is still on top of this sinusoidal motion, not sure how to get rid of that.</p>
+
+
+
+<h4 id="172505-03032016">17:25:05-03/03/2016</h4>
+
+<p>I cannot get a signal out of the lock-in amplifier.  I think the problem is that the modulation is only 400 mVpp since the box is 50<script type="math/tex" id="MathJax-Element-64">\Omega</script> terminated.   There was an attatchment on the box that is not there now which may have helped with this.</p>
+
+
+
+<h4 id="180528-03032016">18:05:28-03/03/2016</h4>
+
+<p>Turned up all the variacs by 5</p>
+
+<table>
+<thead>
+<tr>
+  <th>V2</th>
+  <th>V3</th>
+  <th>V4</th>
+  <th>V7</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>60</td>
+  <td>55</td>
+  <td>60</td>
+  <td>30</td>
+</tr>
+</tbody></table>
+
+
+<p>Shutting system off, going to check for the right cable again.  I found it and the part on the end was an attenuator.</p>
+
+
+
+<h4 id="185549-03032016">18:55:49-03/03/2016</h4>
+
+<p>Lock-in amplifier works, its unclear if the lock box is working.  I will need to investigate this further.</p></div></body>
 </html>
