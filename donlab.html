@@ -1913,5 +1913,52 @@ result:  <script type="math/tex" id="MathJax-Element-2">\rho_{+1} = 0.08789(104)
 
 <h1 id="392016">3/9/2016</h1>
 
-<p>The old interlock system for the main gate valve:</p></div></body>
+<p>The old interlock system for the main gate valve:</p>
+
+<p><img src="https://lh3.googleusercontent.com/OqrDJYRn_8dhOba5qqGY0oZvoxUMuW-ewyzgXBkZ6CORBvg_k6uFDLePO6mD1mUtlSbt=s600" alt="enter image description here" title="IMG_1167.jpg"></p>
+
+<p>The plan is to have the main gate valve interlocked to the ion pump current instead of the backing pressure.</p>
+
+<p>Some thougts on purchasing:</p>
+
+<h3 id="microwave-source">Microwave source</h3>
+
+<p>Looking at a replacement signal generator for the microwaves.  Potential problems with the current system:</p>
+
+<ol>
+<li>HP 8657B is old, and might not perform as well (and will eventually stop working).</li>
+<li>The mixing process produces many other signals at the wrong frequency.  Impedance matching (and waveguide physics) probably prevents much of it from making it into the chamber, but a non-mixing method or a filter might be a good idea.  (Some research on filters showed that a custom filter might be the way to go; stock filters tend to be too wide-band for this application.)</li>
+<li>We don’t know what the phase-noise and spectral purity of the FPGA RF source is.</li>
+</ol>
+
+<p>I’ve looked at two alternatives so far:</p>
+
+<ol>
+<li>BNC 835-M</li>
+<li>AnaPico APSIN20G-1URM</li>
+</ol>
+
+<p>Here is an email exchange I had with a rep:</p>
+
+<p><em>Hello Don,</em></p>
+
+<p><em>Many thanks for the prompt reply.  Our representative in the area will get you a quotation shortly (ATM).</em>  </p>
+
+<p><em>Our partner Anapico also informed us you were looking for a quotation for the APSIN20G-1URM (We would like a quote for this product.  Does the spec’d switching speed apply to both switching between powers and between frequencies), that is the BNC Model 845-20-R (see our ordering chart).  Would you like 2 separate quotations or both units quoted on a single document?</em></p>
+
+<p><em>Any additional insight you can give us to your application and it’s specification requirements will ensure we fit the best product to your needs.</em></p>
+
+<p><em>Regards, </em> <br>
+<em>John R-</em></p>
+
+<p><em>Hi John,</em></p>
+
+<p><em>I’m considering options for replacing our present microwave source.  Currently, we mix the outputs of an HP 8657B (fixed at 1.74 GHz, +13 dBm) with an FPGA RF source (at 30 MHz) using a signal-sideband modulator (Polyphase) to produce 1.772 GHz, which is then amplified and sent to an antenna in our experiment.  We control the system output power and frequency by controlling the FPGA.  The application here is driving transitions between the hyperfine ground states of sodium (1.771626128 GHz). </em></p>
+
+<p><em>I would either like to replace the HP 8657B (datasheet attached) with a newer signal generator (and continue to do the mixing), or replace the whole system with a single fast-switching, programmable, low-noise, 1.772 GHz source.  I’m unsure exactly how fast we would need to switch the power or frequency.  I suspect that something on the order of 1us would be ideal, but I would consider switching speeds in the 10-100us range as possibilities.</em></p>
+
+<p><em>Both items quoted in the same document would be just fine.</em></p>
+
+<p><em>Thanks,</em> <br>
+<em>Don</em></p></div></body>
 </html>
