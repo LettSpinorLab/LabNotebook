@@ -464,6 +464,19 @@
 </li>
 </ul>
 </li>
+<li><a href="#3132016">3/13/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#094509-14032016">09:45:09-14/03/2016</a></li>
+<li><a href="#111055-14032016">11:10:55-14/03/2016</a></li>
+<li><a href="#115236-14032016">11:52:36-14/03/2016</a></li>
+<li><a href="#164159-14032016">16:41:59-14/03/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -2492,6 +2505,8 @@ I(Innolight) = 2.678 A</p>
 
 <p><img src="https://lh3.googleusercontent.com/Tb39VzTV76mAjxG3eV_24CKLkDErh6NGIIKdhAi90OWWOjGIfUoF8zRqaOS_lYxcrfvb=s0" alt="sat abs" title="20160227_155707.jpg"></p>
 
+
+
 <h4 id="161845-27022016">16:18:45-27/02/2016</h4>
 
 <p>I have aligned the saturation absorption beams, but I think I need to play with the powers.  I am going to go home now and come back tomorrow.  I will turn down the variac a bit just to be safe to 4.</p>
@@ -2512,6 +2527,8 @@ I(Innolight) = 2.678 A</p>
 <h4 id="092002-29022016">09:20:02-29/02/2016</h4>
 
 <p>Heating up cell, will just leave it after heated up today and I make sure its stable.  Pressure looks like it is rising in the chamber, but maybe not at the ion pump?  This is surprising.  Ion current 4e-4.  Still see the the fluorescence, now need to get the double passed AOM and the lock-in working.</p>
+
+
 
 <h4 id="134521-29022016">13:45:21-29/02/2016</h4>
 
@@ -2538,6 +2555,8 @@ I(Innolight) = 2.678 A</p>
 <p>We have a saturated absorption signal, tomorrow I will optimize it and then lock the laser with the lock-in.  Now I need to work on my summary of the simulations for tomorrows meeting.</p>
 
 <p><img src="https://lh3.googleusercontent.com/OP38CJt0nnuSCyVqcI6E6BMxsvJQ1ybRkFZCPMkJEuFl7SICQqaLcH5Oc8RzY8NFTP-n=s0" alt="enter image description here" title="20160301_133957.jpg"></p>
+
+
 
 <h1 id="312016">3/1/2016</h1>
 
@@ -2714,7 +2733,7 @@ I(Innolight) = 2.678 A</p>
 <p>I have continued working on the interfermeter simulation and have learned some important things</p>
 
 <ol>
-<li>Pezze and Smerzi’s state is <script type="math/tex" id="MathJax-Element-56">\sum_M p_M |0,M,0\rangle\langle 0,M,0|</script>, where <script type="math/tex" id="MathJax-Element-57">p_M</script> is the Poissonian distribution.  Thus they are running their simulations for a Poissonian mixed state of Fock states which is not necessarily the best initial state to choose.  However, for a vacuum state, I believe this is the same thing is a coherent state in practice.</li>
+<li>Pezze and Smerzi’s state is <script type="math/tex" id="MathJax-Element-50">\sum_M p_M |0,M,0\rangle\langle 0,M,0|</script>, where <script type="math/tex" id="MathJax-Element-51">p_M</script> is the Poissonian distribution.  Thus they are running their simulations for a Poissonian mixed state of Fock states which is not necessarily the best initial state to choose.  However, for a vacuum state, I believe this is the same thing is a coherent state in practice.</li>
 <li>Maybe used a thermal state which minimizes free energy</li>
 </ol>
 
@@ -2749,13 +2768,13 @@ python ClusterReversal.py -N <span class="hljs-number">800</span> -N0 <span clas
 
 <h4 id="132643-11032016">13:26:43-11/03/2016</h4>
 
-<p>Changed code to look at <script type="math/tex" id="MathJax-Element-58">N_+</script> inside the interferometer to get scaling information.  Have optimized the Chebeyshev code so it can now run on the cluster as well.</p>
+<p>Changed code to look at <script type="math/tex" id="MathJax-Element-52">N_+</script> inside the interferometer to get scaling information.  Have optimized the Chebeyshev code so it can now run on the cluster as well.</p>
 
 
 
 <h4 id="160245-11032016">16:02:45-11/03/2016</h4>
 
-<p>I have some preliminary rough calculations where I have scanned over many times, I will now compute it for a broader range of <script type="math/tex" id="MathJax-Element-59">q</script>.  Right now the calculation is parallelized over the different <script type="math/tex" id="MathJax-Element-60">t_{ev}</script>, it may be more advantageous to parallelize it over <script type="math/tex" id="MathJax-Element-61">q</script>.</p>
+<p>I have some preliminary rough calculations where I have scanned over many times, I will now compute it for a broader range of <script type="math/tex" id="MathJax-Element-53">q</script>.  Right now the calculation is parallelized over the different <script type="math/tex" id="MathJax-Element-54">t_{ev}</script>, it may be more advantageous to parallelize it over <script type="math/tex" id="MathJax-Element-55">q</script>.</p>
 
 
 
@@ -2848,7 +2867,7 @@ The power switch was to avoid an issue with the power outage next Tuesday.</li>
 
 <h4 id="115236-14032016">11:52:36-14/03/2016</h4>
 
-<p>Some of the cluster results are coming in.  We can look at the interfermotric fringers as a function of <script type="math/tex" id="MathJax-Element-140">q</script>, which relate to <script type="math/tex" id="MathJax-Element-141">\phi</script> by <script type="math/tex" id="MathJax-Element-142">\phi = 2\pi (2 q t_{ev})</script>:</p>
+<p>Some of the cluster results are coming in.  We can look at the interfermotric fringers as a function of <script type="math/tex" id="MathJax-Element-56">q</script>, which relate to <script type="math/tex" id="MathJax-Element-57">\phi</script> by <script type="math/tex" id="MathJax-Element-58">\phi = 2\pi (2 q t_{ev})</script>:</p>
 
 <p><img src="https://lh3.googleusercontent.com/-8EUEbHtuofo/VubehR6BYgI/AAAAAAAAHWY/W-Vnxpagrywlxd9ozKGaxUyc8QjGCSAGw/s0/fringes_image.png" alt="fringes" title="fringes_image.png"></p>
 
@@ -2858,7 +2877,9 @@ The power switch was to avoid an issue with the power outage next Tuesday.</li>
 
 <p>We have computed these for both the Poisson mixed state (which should be equivalent to the coherent state for a vacuum seeded non-magnetized initial state) and the Fock state for low atom numbers.  Noting that the agreement was quite good, especially for longer times we are interested in, we computed the Fock state sensitivity for higher atom number as it is much easier to compute the evolution.  The straight lines are the standard quantum limit for that evolution.  It is not dependent on the phase pulse, only on the evolution time.</p>
 
-<p>Each of these samples 100 <script type="math/tex" id="MathJax-Element-143">q</script> for 25 different <script type="math/tex" id="MathJax-Element-144">t_{ev}</script> and for each <script type="math/tex" id="MathJax-Element-145">q</script>, there are three full reversal calculations to allow taking a numerical derivative.  Thus, there are around 7,500 calculations taking place.  Each calculation requires three separate diagonalizations, however, I could really speed up the process by saving the first diagonalization as it will be the same as the third.  This can be easily done by Memoization.  The best way to get speed will actually be to get cython on the cluster.  The optimized diagonalization function is a 15x or so speedup at 10k atoms and it takes less time to do two of these than one of the non-optimized function.  I have put in a request.</p>
+<p>Each of these samples 100 <script type="math/tex" id="MathJax-Element-59">q</script> for 25 different <script type="math/tex" id="MathJax-Element-60">t_{ev}</script> and for each <script type="math/tex" id="MathJax-Element-61">q</script>, there are three full reversal calculations to allow taking a numerical derivative.  Thus, there are around 7,500 calculations taking place.  Each calculation requires three separate diagonalizations, however, I could really speed up the process by saving the first diagonalization as it will be the same as the third.  This can be easily done by Memoization.  The best way to get speed will actually be to get cython on the cluster.  The optimized diagonalization function is a 15x or so speedup at 10k atoms and it takes less time to do two of these than one of the non-optimized function.  I have put in a request.</p>
+
+
 
 <h4 id="164159-14032016">16:41:59-14/03/2016</h4>
 
@@ -2872,5 +2893,13 @@ The power switch was to avoid an issue with the power outage next Tuesday.</li>
 <li>Temperature controller for TA</li>
 <li>Plug in power supply for cooling lock</li>
 <li>Sodium cell for Saturated Absorption spectroscopy.</li>
-</ul></div></body>
+</ul>
+
+
+
+<h1 id="3142016">3/14/2016</h1>
+
+<h4 id="105305-15032016">10:53:05-15/03/2016</h4>
+
+<p>Closed main gate valve in case of power failure.  Pressure looks great, hopefully we will not have any issues today.</p></div></body>
 </html>
