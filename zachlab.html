@@ -477,6 +477,16 @@
 </li>
 </ul>
 </li>
+<li><a href="#3142016">3/14/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#105305-15032016">10:53:05-15/03/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -2899,7 +2909,41 @@ The power switch was to avoid an issue with the power outage next Tuesday.</li>
 
 <h1 id="3142016">3/14/2016</h1>
 
+
+
 <h4 id="105305-15032016">10:53:05-15/03/2016</h4>
 
-<p>Closed main gate valve in case of power failure.  Pressure looks great, hopefully we will not have any issues today.</p></div></body>
+<p>Closed main gate valve in case of power failure.  Pressure looks great, hopefully we will not have any issues today.</p>
+
+
+
+<h1 id="3152016">3/15/2016</h1>
+
+<p>Some notes on running Barnett’s TWA code</p>
+
+<ul>
+<li>to compile change the include statements to not have Eigen3/ in them.</li>
+<li><p>Compile command is</p>
+
+<p><code>g++ TruncWignerApproxRoutinesReversal.cpp  -I /home/zacharyglassman/Documents/TWA_Source/Eigen3/ -std=c++11 -o TWA <br>
+</code></p></li>
+<li>Compile with optimization flags for better performance (-O3)</li>
+<li>TruncWignerApproxRoutinesReversal calculates full reversal sequence, TWARoutinesRevPulsePow calculates end parameters for different <script type="math/tex" id="MathJax-Element-62">q</script>, but it does not output everything one might want (no std)  </li>
+</ul>
+
+
+
+<h4 id="132906-16032016">13:29:06-16/03/2016</h4>
+
+<p>Can run high atom numbers with the Fock calculation up to 20,000 atoms in a reasonable time without the cluster.  This relies on the fact that we don’t need to recompute parts of the evolution for each evolution.  In fact we only need to diagonalize a matrix for each different value of q.  So procedure goes as follows.</p>
+
+<ol>
+<li>Diagonalize matrix for non-phase pulse times</li>
+<li>Loop through q values and diagonalize phase matrix</li>
+<li>Loop through t_ev and evolve time (no diagonalization here!)</li>
+<li>Compute various things we want <br>
+Now we only have to diagonalize <script type="math/tex" id="MathJax-Element-63">3q+1</script> matrices (<script type="math/tex" id="MathJax-Element-64">3q</script> to get good idea of numerical derivative.)</li>
+</ol>
+
+<p>I have also implemented the TWA code in the same fashion and it works quite well for mean values, etc.  the issue is in computing the numerical derivative.  Since each realization is a different value of <script type="math/tex" id="MathJax-Element-65">q</script>, computing the derivative is unstable without many,many averages since there is a slight error in the ensemble choice.  One way to get around this would be to use the same ensemble to do each <script type="math/tex" id="MathJax-Element-66">q</script> evolution needed for the numerical derivative.  I will see if there are other options.</p></div></body>
 </html>
