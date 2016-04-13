@@ -4049,5 +4049,38 @@ which will give us a complicated,but exact expression.  We can also Taylor expan
 
 <h4 id="180345-12042016">18:03:45-12/04/2016</h4>
 
-<p>Closing gate valve.</p></div></body>
+<p>Closing gate valve.</p>
+
+<h1 id="4132016">4/13/2016</h1>
+
+<h4 id="094514-13042016">09:45:14-13/04/2016</h4>
+
+<p>Starting up NPG fiber laser and will let it warm up for a bit before turning on sfg system.  Also turning on temperature control unit for SFG crystal.</p>
+
+<p>Everything is working, going to give it a few minutes before alignment.</p>
+
+<p>Getting about 163 mW out of the SFG system with normal settings (2.675 A Mephisto, 2000 mA current for TA).</p>
+
+<p>Just had a hypothesis that the room temperature fluctations might have something to do with the fact that the temperature sensor is right behind the computer monitors which generate a fair bit of heat.</p>
+
+
+
+<h4 id="162932-13042016">16:29:32-13/04/2016</h4>
+
+<p>Lasers off, going to test PLL board today and try to get it working tomorrow.</p>
+
+<p>I am trying to understand how to wire the board correctly to the arduino.  The board requires four inputs:</p>
+
+<ol>
+<li>Clock</li>
+<li>Data</li>
+<li>LE</li>
+<li>MUX</li>
+</ol>
+
+<p>The clock pin controls when data gets shifted into register, this should be connected to the SCK pin the Arduino Duo we are using which is pin ICSP-3.  The MOSI pin is for the data connection, it controls the actual data, thus I think it should go the data pin.  The LE pin controls when data is transferred, I think this should be hooked up to the SS pin (can be pins 4,10,52).  the MUX pin I think goes to the MISO pin.</p>
+
+<h4 id="184733-13042016">18:47:33-13/04/2016</h4>
+
+<p>Circuit is outputting voltage which is integrating in time.  I am going to try it out tomorrow with the lasers if I can get a spectrum analyzer.</p></div></body>
 </html>
