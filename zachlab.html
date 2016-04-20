@@ -4227,9 +4227,91 @@ which will give us a complicated,but exact expression.  We can also Taylor expan
 
 
 
+<h1 id="4182016">4/18/2016</h1>
+
+<p>Used a fiber splitter meant for 780 nm light to attempt to mix light for the beatnote signal.  This didn’t really work as the light did not seem to mix.  By this I mean there was a strong output of each input arm from only one of the output arms as opposed the 50/50 splitting that is stated.  This is almost certainly due to the fact that we were using fiber for the wrong wavelength.  We also saw evidence of higher order spatial modes propogating which confirms this.</p>
+
+<p>The idea is to use a fiber to combine the light before launching into the beatnote detection optics.  This will guarentee perfect overlap of the modes of the two signals.  Also, it will allow us to mix polarizations which should give us a better signal.</p>
+
+
+
+<h1 id="4192016">4/19/2016</h1>
+
+<p>I replaced the fiber splitter by a single fiber and tried to combine the beams into the fiber.  This didn’t work too well, possibly because the optics already on the table didn’t allow for the best possible method of doing this, but also because one of the beams is expanding and so sending it over long distances was not helpful.  </p>
+
+<p>I replaced one fiber by two fibers and mixed them on a beam splitter in front of the fast photodiode for the beatnote.  While not ideal, this will at least let us test the new locking electronics.  When we receive the new fiber splitter for 589 light, we can then proceed.</p>
+
 <h1 id="4202016">4/20/2016</h1>
 
 <h4 id="094411-20042016">09:44:11-20/04/2016</h4>
 
-<p>Fireing zeeman TI filament 1 at 48.5 amps for 2 mins</p></div></body>
+<p>Fireing zeeman TI filament 1 at 48.5 amps for 2 mins</p>
+
+<h4 id="132849-20042016">13:28:49-20/04/2016</h4>
+
+<p>Fireing chamber TI filament 2 at 48.5 amps for 1.5 mins</p>
+
+
+
+<h4 id="143743-20042016">14:37:43-20/04/2016</h4>
+
+<p>Figuring out ideal realtionships for the PLL lock.  We know the relationship for the frequency is </p>
+
+<pre><code>RF_FREQ = [(P*B+A)/R]*REF_FREQ
+</code></pre>
+
+<p>We usually define <script type="math/tex" id="MathJax-Element-129">N= P*B+A</script> and want to minimize <script type="math/tex" id="MathJax-Element-130">N/R</script></p>
+
+<p>The beatnote frequency is around the hyperfine splitting of the ground state <script type="math/tex" id="MathJax-Element-131">F=1</script> of sodium, it may not be this exactly, need to figure out lasing scheme in more detail.  Suppose it is, and noting that the cooling laser is locked to the <script type="math/tex" id="MathJax-Element-132">D_2</script> line, the exact beatnote frequency (from Steck) is 1.7716261288 GHz.  Assuming a reference frequency of 20 MHz, then <script type="math/tex" id="MathJax-Element-133">N/R =88.58130643999999</script>.  Now we can program values subject to </p>
+
+<ul>
+<li>P: prescalar value; can be 8, 16, 32, or 64.</li>
+<li>B: B counter; accepts integer 3-8191 (13 bit). B cannot take values 0,1, or 2.</li>
+<li>A: A counter; accepts integer 0-63 (6 bit).</li>
+<li>R: Reference divider; accepts integer 1-16383 (14 bit).</li>
+</ul>
+
+<p>We can now calculate the best values by calculating all possible values and finding the values of the parameters which optimize the signal while being closes to integers.  This is calculation which only takes a few minutes.  We will only store optimal values.</p>
+
+<p>I minimized for each value of P, and get </p>
+
+<table>
+<thead>
+<tr>
+  <th>(P,B,A,R)</th>
+  <th>N/R Difference</th>
+  <th>Error (Hz)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>(8, 5916, 63, 535)</td>
+  <td>-1.971214956597578e-06</td>
+  <td>-39.424298936552304</td>
+</tr>
+<tr>
+  <td>(16, 4320, 62, 781)</td>
+  <td>4.220742511051867e-07</td>
+  <td>8.441485066512655</td>
+</tr>
+<tr>
+  <td>(32, 2160, 62, 781)</td>
+  <td>4.220742511051867e-07</td>
+  <td>8.441485066512655</td>
+</tr>
+<tr>
+  <td>(64, 1080, 62, 781)</td>
+  <td>4.220742511051867e-07</td>
+  <td>8.441485066512655</td>
+</tr>
+</tbody></table>
+
+
+<p>So these are the optimal values with errors from the ideal frequency of a few Hz (this should be plenty good enough).</p>
+
+<p>Some other notes about the PLL board:</p>
+
+<ul>
+<li>the LE selects the the chip (connects to the SS).</li>
+<li>The MISO channel should be conntected to the Data channel with the MOSI connected to the MISO through a 10k resistor.</li>
+</ul></div></body>
 </html>
