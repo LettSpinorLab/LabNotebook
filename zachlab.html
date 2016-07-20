@@ -819,6 +819,21 @@
 <li><a href="#5102016">5/10/2016</a></li>
 <li><a href="#5112016">5/11/2016</a></li>
 <li><a href="#672016">6/7/2016</a></li>
+<li><a href="#6142016">6/14/2016</a></li>
+<li><a href="#6172016">6/17/2016</a></li>
+<li><a href="#6212016">6/21/2016</a></li>
+<li><a href="#6302016"> 6/30/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#160552-30062016">16:05:52-30/06/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#7192016"> 7/19/2016</a></li>
+<li><a href="#7202016"> 7/20/2016</a></li>
 </ul>
 </div>
 </p>
@@ -4613,7 +4628,9 @@ which will give us a complicated,but exact expression.  We can also Taylor expan
 
 <h1 id="6142016">6/14/2016</h1>
 
-<p>Trying to align spectroscopy with the double pass on the other order.  Not seeing the correct transition, although we do see the other two.  </p>
+<p>Trying to align spectroscopy with the double pass on the other order.  Not seeing the correct transition, although we do see the other two. </p>
+
+<p>Trying to adjust waveplates to get the best signal for the crossover peak we do see.</p>
 
 <table>
 <thead>
@@ -4629,9 +4646,164 @@ which will give us a complicated,but exact expression.  We can also Taylor expan
   <td>20</td>
 </tr>
 <tr>
-  <td>60</td>
-  <td></td>
-  <td></td>
+  <td>68</td>
+  <td>90</td>
+  <td>36</td>
 </tr>
-</tbody></table></div></body>
+<tr>
+  <td>70</td>
+  <td>89</td>
+  <td>40</td>
+</tr>
+<tr>
+  <td>72</td>
+  <td>88</td>
+  <td>46</td>
+</tr>
+<tr>
+  <td>74</td>
+  <td>87.5</td>
+  <td>60</td>
+</tr>
+<tr>
+  <td>76</td>
+  <td>86.5</td>
+  <td>60</td>
+</tr>
+<tr>
+  <td>78</td>
+  <td>86</td>
+  <td>62</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h1 id="6172016">6/17/2016</h1>
+
+<p>Have vescent lock box running with old lock in amplifier.  Going to switch to peak lock mode and use its built in lock in detection.  I need to make sure the RF modulation is the same as before.  For the SRS, the ref output is 1 Vrms.  For the vescent, the max amplitude is 60 mV.  So with an 8db attenuator in the old system, the amplitude was 400 mV.  So I should be able to connect to intraction with no issues as this has a 1V peak to peak control.</p>
+
+<p>The RF output of the Vescent does not seem to be working, it is a very small and very noisy signal which cannot drive the aom.  Unfortunately, I cannot connect the timebases either.</p>
+
+
+
+<h1 id="6212016">6/21/2016</h1>
+
+<p>We are going to use instrumental from mabuchi lab at stanford to control some of the cameras and also possibly some other things.  It is a great piece of software, however, it was written for Python 2 and we use Python 3, so there are some modifications necessary.  I will try to list here the modifications I have had to make in order to make it compatible at least for using the uc tholabs camera.  It was easier to do this than start from scratch and write all the routines myself.  All of these changes were after running 2to3 on the whole package</p>
+
+<ol>
+<li>buffer becomes memoryview</li>
+<li><p>encoding to hexadecimal strings needs to be done with binascii so we have the code</p>
+
+<pre><code>return int(binascii.b2a_hex(sInfo.nColorMode), 16)
+instead of
+return int(sInfo.nColorMode.encode('hex'), 16)
+</code></pre></li>
+</ol>
+
+
+
+<h1 id="6302016"> 6/30/2016</h1>
+
+<p>Tested lock stability, go a width of less than 1 MHz for the beatnote.  This is quite good.</p>
+
+
+
+<h4 id="160552-30062016">16:05:52-30/06/2016</h4>
+
+<p>Testing the zeeman slower.  </p>
+
+<p>First test: <br>
+with magnet:   707210.18181818211 <br>
+without magnet: 248362.75454545455</p>
+
+<p>going to do the test a few times. <br>
+Second test:</p>
+
+
+
+<h1 id="7192016"> 7/19/2016</h1>
+
+<p>Trying to get the NI-DAQ cards and pulseblaster to work.  For cards in the NI case (DAQ M label), we have </p>
+
+<ul>
+<li>PCI-GPIB</li>
+<li>PCI-6025E</li>
+<li>PCI-6713</li>
+<li>PCI-6733</li>
+</ul>
+
+<p>I have determined that the startech extension boxes might not work on the new computers and I am trying to get them working on the old analysis computer which has a different motherboard.  The computer seems to recognize the PCI-express to PCI bridge, but doesn’t recognize the cards.</p>
+
+<p>Cards work fine when directly plugged into computer, so it seems like the extension box is in error.  </p>
+
+<p>Changed to shorter wire.  The longer startech box seems to work, although the others still do not.  The draw much more power, which may be the issue.</p>
+
+
+
+<h1 id="7202016"> 7/20/2016</h1>
+
+<p>Trying to get the timebase working for the analog controls.  It seems like labscript won’t increment time in a reasonable manner.  The problem is that we have an old pulseblaster card which cannot be asked in the same way if it is done (or possibly not at all), so when blacs checks the card to see if it is done, it is finished immediately.  This does not affect the pulseblaster output as it is all written out immeediately, but it does affect the ni-daq cards which are clocked by the pulseblaster and told to shut-down immediately.  </p>
+
+<p>I kluged a fix by simply requiring that the device not signal done until a certain amount of time has passed (in principle the time for one experiment).  This works, however, we should think about replacing the card as it is from 2003 and they have much improved in that time.  We should consider getting either usb or pci-express versions.</p>
+
+<p>I am going to make a table of the old digital output from the pulseblaster although we will not necessarily use the same setup. <br>
+first for DAQE  This is all the available information, some was not there and some not avaialbe and some lost in the move.  </p>
+
+<table>
+<thead>
+<tr>
+  <th>Channel</th>
+  <th>Output</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>0</td>
+  <td>intraaction cooling</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>uniblitz driver A-1</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>intraaction repump dark spot</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>repump shutter</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>uniblitz driver A-2</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>intraaction imaging</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>imaging ttl</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>trig in camera</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>imaging probe</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>intraaction south america</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>Trim coil</td>
+</tr>
+</tbody></table>
+
+
+<p>The rest can probably ascertained from the setlist.  </p></div></body>
 </html>
