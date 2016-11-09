@@ -834,6 +834,19 @@
 </li>
 <li><a href="#7192016"> 7/19/2016</a></li>
 <li><a href="#7202016"> 7/20/2016</a></li>
+<li><a href="#8152016"> 8/15/2016</a></li>
+<li><a href="#10102016">10/10/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#114652-10102016">11:46:52-10/10/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#10272016">10/27/2016</a></li>
+<li><a href="#1112016-1">11/1/2016</a></li>
 </ul>
 </div>
 </p>
@@ -4876,5 +4889,70 @@ first for DAQE  This is all the available information, some was not there and so
   <td>37.5</td>
   <td>5.54</td>
 </tr>
-</tbody></table></div></body>
+</tbody></table>
+
+
+
+
+<h1 id="10102016">10/10/2016</h1>
+
+
+
+<h4 id="114652-10102016">11:46:52-10/10/2016</h4>
+
+<p>Going to do a better job of keeping lab notebook.  Notes on progress:</p>
+
+<ul>
+<li>Have nice MOT with new coils</li>
+<li>Needed to optimize reversal coil to get loading properly.</li>
+<li>Error this morning when computers were re-assigned ip addresses.  Public IP adresses may be the same for multiple computers, it is import to use the ipv4 address which is unique.  can use command <code>ipconfig /all</code> to find this address.</li>
+<li>Going to try to optimize MOT loading time, size and density and then then get optical dipole trap working.</li>
+</ul>
+
+<p>Question: Can we do spectroscopy on the Zeeman slower?  Several options</p>
+
+<ol>
+<li>Get a dye laser going and locked and scan frequency.</li>
+<li>Get an AOM or EOM to generate repump beam for slower.</li>
+<li>Use beam on the table to scan frequency.</li>
+</ol>
+
+<p>We expect that the majority of the slowed atoms to be at a velocity in the 10’s of meters per second range and we only need to be able to scan over one of the peaks and see how its center changes.  We can probe the F=2 to F=3 transition. </p>
+
+<p>We will use the light for the imaging beam and double pass it</p>
+
+
+
+<h1 id="10272016">10/27/2016</h1>
+
+<p>Got the dye laser working and have seen spectroscopy signal from the MOT with an absorbtion measurement using only a photodiode.  I scanned about 0.59 GHz (as measured on the dye box) and was able to see at least two peaks and possibly all three.  I was not able to see the peaks from just the atomic beam.  I tried to do a beam subtraction briefly and it helped the MOT signal, but didn’t do anything for the atomic beam.  </p>
+
+<p>I have fit the spectra from the MOT and get reasonable numbers for the spacing of the hyperfine structure, but I am pretty sure the electronic calibration is off for the dye laser (ie. 0.59 GHz is not actually 0.59 GHz), so I need to retake the data with a better method for measuring the frequency (could use a beatnote or the fabry perot already set up to get a better measure).  </p>
+
+<p>Tomorrow I want to try to measure the atomic beam, I have two ideas</p>
+
+<ul>
+<li>Get lock-in amplification working (was done in past) try the sine wave instead of square wave</li>
+<li>Try subtraction box that Don has built.  I am not sure this is any different than doing the subtraction on the scope, but it might be a bit better?</li>
+</ul>
+
+<p>I think the lock-in amplification is the best bet as it is a quite weak signal and this has worked in the past.</p>
+
+<p>If I get the lock-in amplification working on the MOT and then try to see the atomic beam and I don’t see it, I would expect that possibly the oven is misaligned and we are only getting part of the atomic distribution.</p>
+
+
+
+<h1 id="1112016-1">11/1/2016</h1>
+
+<p>Got the Lock-in working with both frequency and amplitude modulation.  I am going to try to raise the power in the beam and leave the repump on while scanning the atomic beam.</p>
+
+
+
+<h1 id="1192016-1">11/9/2016</h1>
+
+<p>Was able to see atomic beam with repump laser being scanned and crossed perpendicularly.  Was able to slightly optimize oven by optimizing peak of gaussian fit to scan.  Power in beam to chamber about 100 mW.</p>
+
+<p>Now attempting to see signal at an angle.  Didn’t work with just tilting the angle through the bottom in the sense that I couldn’t see the shift, going to try through one of the side MOT windows.</p>
+
+<p>Setting up a Fabry-Perot with a FSR of 1.5GHz so I can lock the cooling laser to the F=2 transition instead of the F=1 transition (I had been using the F=1 so I could see the beatnote to get a frequency reference and this won’t work for frequencies less than 1.5 GHz due to amplifier).</p></div></body>
 </html>
