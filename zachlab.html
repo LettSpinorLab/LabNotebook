@@ -847,6 +847,9 @@
 </li>
 <li><a href="#10272016">10/27/2016</a></li>
 <li><a href="#1112016-1">11/1/2016</a></li>
+<li><a href="#1192016-1">11/9/2016</a></li>
+<li><a href="#11112016">11/11/2016</a></li>
+<li><a href="#11182016">11/18/2016</a></li>
 </ul>
 </div>
 </p>
@@ -4954,5 +4957,153 @@ first for DAQE  This is all the available information, some was not there and so
 
 <p>Now attempting to see signal at an angle.  Didn’t work with just tilting the angle through the bottom in the sense that I couldn’t see the shift, going to try through one of the side MOT windows.</p>
 
-<p>Setting up a Fabry-Perot with a FSR of 1.5GHz so I can lock the cooling laser to the F=2 transition instead of the F=1 transition (I had been using the F=1 so I could see the beatnote to get a frequency reference and this won’t work for frequencies less than 1.5 GHz due to amplifier).</p></div></body>
+<p>Setting up a Fabry-Perot with a FSR of 1.5GHz so I can lock the cooling laser to the F=2 transition instead of the F=1 transition (I had been using the F=1 so I could see the beatnote to get a frequency reference and this won’t work for frequencies less than 1.5 GHz due to amplifier).</p>
+
+
+
+<h1 id="11112016">11/11/2016</h1>
+
+<p>Going to move the oven around and try to optimize the signal, at first we will raise the back two legs and record the amplitude of the 90 degree spectra as a function of the turns to raise it.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Turns</th>
+  <th>Amplitude</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>0</td>
+  <td>23036</td>
+</tr>
+<tr>
+  <td>1/8 back raise</td>
+  <td>25238</td>
+</tr>
+<tr>
+  <td>1/8 back raise</td>
+  <td>21437</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h1 id="11182016">11/18/2016</h1>
+
+<p>Had to fix the dye laser, so lost some time doing the spectroscopy, going to align it and try to get the oven better again.  </p>
+
+<table>
+<thead>
+<tr>
+  <th>Description</th>
+  <th>Amplitude</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>Start</td>
+  <td>25414</td>
+</tr>
+<tr>
+  <td>Front Right half raise</td>
+  <td>24024</td>
+</tr>
+<tr>
+  <td>Back Right half raise</td>
+  <td>22526</td>
+</tr>
+<tr>
+  <td>Back Right half lower and raise left half</td>
+  <td>25026</td>
+</tr>
+<tr>
+  <td>quarter a turn lower on each back</td>
+  <td>24815</td>
+</tr>
+<tr>
+  <td>raise quarter both front</td>
+  <td>26650</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h1 id="11212016">11/21/2016</h1>
+
+<p>I am going to write up a bit of a description of the lab, especially with reference to procedures.  I will try to keep this updated.</p>
+
+
+
+<h3 id="hallway">Hallway</h3>
+
+<p>In the hallway, the devices necessary for day to day usage are: <br>
+1. Heat Exchanger - Cools Zeeman Slower magnet <br>
+2. HP power supply - Reversal Coil and increasing zeeman field section <br>
+3. ESS power supply - Mot coil  <br>
+4. Sorenson - zeeman slower <br>
+5.  2 Agilent power supply - control voltages <br>
+6. One old hp power supply - control voltage</p>
+
+<p>Generally the procedure should be to turn on the water from the wall by opening valves, then open the valves to the heat exchanger and turn it on.  the valves to the heat exchanger should be closed whenever it is not running to conserve FC-77.</p>
+
+<p>The cooling for the MOT coils and reversal coils comes from a unit inside the lab, make sure it is on before turning on these power supplies.  The reversal coils are interlocked to the water flow, currently the MOT coils are not interlocked, however, they are run at relatively low current and are replaceable without breaking vacuum.</p>
+
+<h3 id="lasers">Lasers</h3>
+
+<p>There are three main laser systems in the lab, a SHG system (toptica DL PRO with MPG raman fiber amplifier and fiber laser), an SFG system (mephisto laser, np photonics laser, tapered amplifier, SFG module), and a dye laser (coherent 899 with verdi). </p>
+
+
+
+<h4 id="turn-on">Turn on</h4>
+
+<h5 id="shg-system">SHG System</h5>
+
+<ol>
+<li>Turn on current output for DL PRO (should be around 19.9 C and 294 mA)</li>
+<li>Turn on power to fiber laser system</li>
+<li>Look on computer, when SHG module temperature reaches 70.4 (will become green), key on standby and start laser in current mode.  </li>
+<li>Raise laser current to ~ 4000 mA (want something around 600mW of power)</li>
+<li>After locking (described later) turn laser to power mode with 650 mW output.</li>
+</ol>
+
+
+
+<h5 id="sfg-system">SFG System</h5>
+
+<ol>
+<li>Turn on temperature controller located on top of mephisto box (setpoint should be around 5.91, changes over time)</li>
+<li>Turn on np photonics laser.</li>
+<li>Turn on mephisto laser and raise current to 2.679 mA.  Temperature should be around 23.6 C</li>
+<li>Turn on current source to TA and raise to 100 mA.  </li>
+<li>Unblock the np photonics laser and raise power on TA to a few hundred mA and look for yellow light.</li>
+<li>If yellow light is seen, raise to 2000mA on current control for TA</li>
+<li>After about half an hour, switch the NP photonics laser to power mode using the laptop.</li>
+</ol>
+
+
+
+<h5 id="dye-laser">Dye Laser</h5>
+
+<ol>
+<li>Turn on coherent chiller and verdi electronics box (may need to bypass error)</li>
+<li>Turn on chiller for dye</li>
+<li>After warmup key on the laser (DO NOT OPEN SHUTTER YET!)</li>
+<li>Turn on dye circulator</li>
+<li>Open shutter for Verdi, power should be 10W</li>
+<li>Turn on electronics control box for dye laser</li>
+<li>Look for lasing.  If no lasing, try tweaking output coupler knobs slightly.</li>
+</ol>
+
+
+
+<h4 id="locking">Locking</h4>
+
+<p>The laser lock consists of FM spectroscopy in the sodium cell to lock the cooling laser (SHG system) to the D2 line F=2 to F’=2,3 crossover transition.  The SFG system is then beatnote locked to the SHG system.  Currently, the dye laser is not locked to the other lasers, although it is locked to the 5GHz FSR cavity beside it. </p>
+
+<ol>
+<li>Turn on the saturation spectroscopy AOM, the lowest lock-in amplifier, and the Vescent locking system</li>
+<li>Looking at scope, turn the ramp offset knob to scan the transition and lock to the crossover.</li>
+3. 
+</ol></div></body>
 </html>
