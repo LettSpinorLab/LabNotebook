@@ -850,6 +850,25 @@
 <li><a href="#1192016-1">11/9/2016</a></li>
 <li><a href="#11112016">11/11/2016</a></li>
 <li><a href="#11182016">11/18/2016</a></li>
+<li><a href="#11212016">11/21/2016</a><ul>
+<li><ul>
+<li><a href="#hallway">Hallway</a></li>
+<li><a href="#lasers">Lasers</a><ul>
+<li><a href="#turn-on">Turn on</a><ul>
+<li><a href="#shg-system">SHG System</a></li>
+<li><a href="#sfg-system">SFG System</a></li>
+<li><a href="#dye-laser">Dye Laser</a></li>
+</ul>
+</li>
+<li><a href="#locking">Locking</a></li>
+</ul>
+</li>
+<li><a href="#computers">Computers</a></li>
+<li><a href="#software">Software</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -5049,6 +5068,8 @@ first for DAQE  This is all the available information, some was not there and so
 
 <p>The cooling for the MOT coils and reversal coils comes from a unit inside the lab, make sure it is on before turning on these power supplies.  The reversal coils are interlocked to the water flow, currently the MOT coils are not interlocked, however, they are run at relatively low current and are replaceable without breaking vacuum.</p>
 
+
+
 <h3 id="lasers">Lasers</h3>
 
 <p>There are three main laser systems in the lab, a SHG system (toptica DL PRO with MPG raman fiber amplifier and fiber laser), an SFG system (mephisto laser, np photonics laser, tapered amplifier, SFG module), and a dye laser (coherent 899 with verdi). </p>
@@ -5056,6 +5077,8 @@ first for DAQE  This is all the available information, some was not there and so
 
 
 <h4 id="turn-on">Turn on</h4>
+
+
 
 <h5 id="shg-system">SHG System</h5>
 
@@ -5104,6 +5127,95 @@ first for DAQE  This is all the available information, some was not there and so
 <ol>
 <li>Turn on the saturation spectroscopy AOM, the lowest lock-in amplifier, and the Vescent locking system</li>
 <li>Looking at scope, turn the ramp offset knob to scan the transition and lock to the crossover.</li>
-3. 
-</ol></div></body>
+<li>Make sure the beatnote power supplies (2 agilent) and frequency sources at around 20 MHz (computer controlled) are on.  Plug in the arduino to power for a second to upload the sketch.</li>
+<li>Turn the lock on and adjust the mephisto laser temperature until the beatnote is around 1.72 GHz, the lock can be monitored on the oscilloscope directly next to the beat note circuit.  The blue line is the current feedback which should average out to zero and the yellow is the error signal which when locked will quickly oscillate back and forth.  When monitoring on a spectrum analyzer, lowering the temperature should increase the beatnote.</li>
+</ol>
+
+<p>For the dye laser switch the mode into lock and monitor on a fabry-perot.  If there appears to be mode hopping, open the front and perform the electronic alignment procedure for the side cavity.  The important thing is to get the slope of the signal.</p>
+
+
+
+<h3 id="computers">Computers</h3>
+
+<p>Currently there are four computers used to run the experiment, although in the future at least one can be eliminated.  Names and function are as follows</p>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Location</th>
+  <th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>Laptop</td>
+  <td>overhead shelving</td>
+  <td>Control lasers and log lab conditions</td>
+</tr>
+<tr>
+  <td>Exp Computer</td>
+  <td>Far left on table</td>
+  <td>Control experimental hardware</td>
+</tr>
+<tr>
+  <td>Cam Computer</td>
+  <td>Middle on table</td>
+  <td>Control andor camera and normally run live analysis</td>
+</tr>
+<tr>
+  <td>Analysis Computer</td>
+  <td>Far right on table</td>
+  <td>Control pixelfly camera and offline analysis</td>
+</tr>
+</tbody></table>
+
+
+<p>The startup procedure is: <br>
+1. Turn on the power strip in the blue equipment rack and wait half a minute. <br>
+2. Turn on the power supply inside the rack <br>
+3. Turn on the black PCI extension box. <br>
+4. Turn on the computers <br>
+5. On Exp computer, open blacs <br>
+6. On Cam computer login and connect to the Z drive (experiment folder on exp computer).  Username is spinorbec with no password for connection to the Z drive <br>
+7. connect to Z drive from Analysis computer in the same manner (if connection table requires pixelfly camera).</p>
+
+<p>The Analysis computer contains both python 2 and python 3 environments.  To activate a python 2 environment, use the command <code>activate py2</code> from the command line.  This is necessary to run the camera server, however, it is recommend that new software and analysis be done in python 3.  The experimental software may be ported to python 3 at some point, but it will require substantial work for only minor gains at the moment.</p>
+
+
+
+<h3 id="software">Software</h3>
+
+<p>The experimental software in this lab is our own fork of the labscript suite.  There are several compartmentalized programs with specific functionalities.  </p>
+
+<table>
+<thead>
+<tr>
+  <th>Program</th>
+  <th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>BLACS</td>
+  <td>Control Hardware</td>
+</tr>
+<tr>
+  <td>Runmanager</td>
+  <td>Control shot variables and sequences, compile shots</td>
+</tr>
+<tr>
+  <td>Runviewer</td>
+  <td>Visualize experimental shot</td>
+</tr>
+<tr>
+  <td>Lyse</td>
+  <td>Analyse shots</td>
+</tr>
+<tr>
+  <td>Camera server</td>
+  <td>Run cameras, collect images, save to file</td>
+</tr>
+</tbody></table>
+
+
+<p>Generally speaking, one will use a labscript script which is just a python program</p></div></body>
 </html>
