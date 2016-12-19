@@ -395,7 +395,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#7222016">7/22/2016</a></li>
+<li><a href="#12192016">12/19/2016</a></li>
 </ul>
 </div>
 </p>
@@ -1920,12 +1920,12 @@ V7:  <em>Zeeman slower</em></p>
 
 <p><font color="brown">#960       seedpow0 <br>
 image summing, (1,0) + (2,-1), Power 35…5dBm, followed by pi-pulse (2,-1) + (1,-1) <br>
-result:  <script type="math/tex" id="MathJax-Element-3">\rho_{-1} = 0.096587(106)/w \cdot P_{-1}</script> <br>
+result:  <script type="math/tex" id="MathJax-Element-1">\rho_{-1} = 0.096587(106)/w \cdot P_{-1}</script> <br>
 <font></font></font></p>
 
 <p><font color="brown">#1073  seedpow0 <br>
 image summing, (1,0) + (2,+1), Power 35…5dBm, followed by pi-pulse (2,+1) + (1,+1) <br>
-result:  <script type="math/tex" id="MathJax-Element-4">\rho_{+1} = 0.08789(104)/w \cdot P_{+1}</script> <br>
+result:  <script type="math/tex" id="MathJax-Element-2">\rho_{+1} = 0.08789(104)/w \cdot P_{+1}</script> <br>
 <font></font></font></p>
 
 <p><font color="brown">Notes: <br>
@@ -2580,5 +2580,138 @@ Turned all variacs to 25, except for the Zeeman (V7) and Oven Top (V6), which we
 
 <h1 id="12192016">12/19/2016</h1>
 
-<p>Testing the lab notebook.</p></div></body>
+<h4 id="102506-19122016">10:25:06-19/12/2016</h4>
+
+<p>Recently had a decent MOT.  Learned that Zeeman current may not be near optimal value for efficient slowing.  Doing a 2D scan of Zeeman and reversal coil currents to determine optimal values.  Side-effect is that magnetic field at MOT changes with scanned values, which can affect the size of the MOT and mask the true optimal values.  Would like to scan the E/W trim coils in tandem to maintain a relatively constant B-field at the location of the MOT through 2D scan.  Will determine B-field near MOT location with Gaussmeter for different currents in coils, and then the necessary control voltage to the E/W trim coil to offset the Zeeman/reversal coils.</p>
+
+<p>Values for trim coils before experiment began:</p>
+
+<table>
+<thead>
+<tr>
+  <th align="center">NS</th>
+  <th align="center">EW</th>
+  <th align="center">UP</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center">-0.6</td>
+  <td align="center">0.0</td>
+  <td align="center">1.0</td>
+</tr>
+</tbody></table>
+
+
+<p>Values for Zeeman, reversal, and MOT coils before experiment began:</p>
+
+<table>
+<thead>
+<tr>
+  <th align="center">Zeeman</th>
+  <th align="center">Reversal</th>
+  <th align="center">MOT</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center">8.8</td>
+  <td align="center">60</td>
+  <td align="center">8.0</td>
+</tr>
+</tbody></table>
+
+
+<p>The Gaussmeter sensor has been inserted in the top so that it is aligned to the E/W direction and is very near the top re-entrant window, near the center of the window.  (The exact distance above the glass is unknown, but perhaps a centimeter?)</p>
+
+<p>Gaussmeter reading:  +1.4(1)</p>
+
+<p>Checking the E/W coils:</p>
+
+<table>
+<thead>
+<tr>
+  <th align="center">V (E/W)</th>
+  <th align="center">B (G)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center">-9</td>
+  <td align="center">2.4</td>
+</tr>
+<tr>
+  <td align="center">-6</td>
+  <td align="center">2.2</td>
+</tr>
+<tr>
+  <td align="center">-3</td>
+  <td align="center">1.6</td>
+</tr>
+<tr>
+  <td align="center">0</td>
+  <td align="center">1.4</td>
+</tr>
+<tr>
+  <td align="center">3</td>
+  <td align="center">1.1</td>
+</tr>
+<tr>
+  <td align="center">6</td>
+  <td align="center">0.6</td>
+</tr>
+<tr>
+  <td align="center">9</td>
+  <td align="center">0.4</td>
+</tr>
+</tbody></table>
+
+
+<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-366">V_{EW} = m B + c</script>, <script type="math/tex" id="MathJax-Element-367">m = -8.5, c = 11.83</script>.</p>
+
+<p>Now the experiment (Zeeman/reversal coils B fields are with E/W set to 0)</p>
+
+<table>
+<thead>
+<tr>
+  <th align="center">I<sub>Zeeman</sub> (A)</th>
+  <th align="center">I<sub>Reversal</sub> (A)</th>
+  <th align="center">B (G)</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center">6</td>
+  <td align="center">45</td>
+  <td align="center">1.2</td>
+</tr>
+<tr>
+  <td align="center">6</td>
+  <td align="center">70</td>
+  <td align="center">1.0</td>
+</tr>
+<tr>
+  <td align="center">8</td>
+  <td align="center">45</td>
+  <td align="center">1.4</td>
+</tr>
+<tr>
+  <td align="center">8</td>
+  <td align="center">70</td>
+  <td align="center">1.15</td>
+</tr>
+<tr>
+  <td align="center">9.5</td>
+  <td align="center">45</td>
+  <td align="center">1.55</td>
+</tr>
+<tr>
+  <td align="center">9.5</td>
+  <td align="center">70</td>
+  <td align="center">1.4</td>
+</tr>
+</tbody></table>
+
+
+<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-368">B = a I_{Z} + b I_{r} - d</script>, <script type="math/tex" id="MathJax-Element-369">a=0.08, b=-0.009, d=-1.1</script>.</p>
+
+<p>Together, we get: <br>
+<script type="math/tex" id="MathJax-Element-370">V_{EW} = m (a I_{Z} + b I_{r} - d) + c)</script> <br>
+<script type="math/tex" id="MathJax-Element-371"> \rightarrow V_{EW} = -8.5 (0.08 I_{Z} -0.009 I_{r} + 1.1) + 11.83</script></p></div></body>
 </html>
