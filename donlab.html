@@ -395,7 +395,16 @@
 </li>
 </ul>
 </li>
-<li><a href="#12192016">12/19/2016</a></li>
+<li><a href="#12192016">12/19/2016</a><ul>
+<li><ul>
+<li><ul>
+<li><a href="#102506-19122016">10:25:06-19/12/2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
@@ -2580,6 +2589,8 @@ Turned all variacs to 25, except for the Zeeman (V7) and Oven Top (V6), which we
 
 <h1 id="12192016">12/19/2016</h1>
 
+
+
 <h4 id="102506-19122016">10:25:06-19/12/2016</h4>
 
 <p>Recently had a decent MOT.  Learned that Zeeman current may not be near optimal value for efficient slowing.  Doing a 2D scan of Zeeman and reversal coil currents to determine optimal values.  Side-effect is that magnetic field at MOT changes with scanned values, which can affect the size of the MOT and mask the true optimal values.  Would like to scan the E/W trim coils in tandem to maintain a relatively constant B-field at the location of the MOT through 2D scan.  Will determine B-field near MOT location with Gaussmeter for different currents in coils, and then the necessary control voltage to the E/W trim coil to offset the Zeeman/reversal coils.</p>
@@ -2664,7 +2675,7 @@ Turned all variacs to 25, except for the Zeeman (V7) and Oven Top (V6), which we
 </tbody></table>
 
 
-<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-1308">V_{EW} = m B + c</script>, <script type="math/tex" id="MathJax-Element-1309">m = -8.5, c = 11.83</script>.</p>
+<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-3">V_{EW} = m B + c</script>, <script type="math/tex" id="MathJax-Element-4">m = -8.5, c = 11.83</script>.</p>
 
 <p>Now the experiment (Zeeman/reversal coils B fields are with E/W set to 0)</p>
 
@@ -2709,11 +2720,11 @@ Turned all variacs to 25, except for the Zeeman (V7) and Oven Top (V6), which we
 </tbody></table>
 
 
-<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-1310">B = a I_{Z} + b I_{r} - d</script>, <script type="math/tex" id="MathJax-Element-1311">a=0.08, b=-0.009, d=-1.1</script>.</p>
+<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-5">B = a I_{Z} + b I_{r} - d</script>, <script type="math/tex" id="MathJax-Element-6">a=0.08, b=-0.009, d=-1.1</script>.</p>
 
 <p>Together, we get: <br>
-<script type="math/tex" id="MathJax-Element-1312">V_{EW} = m (a I_{Z} + b I_{r} - d) + c)</script> <br>
-<script type="math/tex" id="MathJax-Element-1313"> \rightarrow V_{EW} = -8.5 (0.08 I_{Z} -0.009 I_{r} + 1.1) + 11.83</script></p>
+<script type="math/tex" id="MathJax-Element-7">V_{EW} = m (a I_{Z} + b I_{r} - d) + c)</script> <br>
+<script type="math/tex" id="MathJax-Element-8"> \rightarrow V_{EW} = -8.5 (0.08 I_{Z} -0.009 I_{r} + 1.1) + 11.83</script></p>
 
 <p>Setting circular polarization <br>
 top = RH, bottom = LH <br>
