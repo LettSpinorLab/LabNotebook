@@ -2675,7 +2675,7 @@ Turned all variacs to 25, except for the Zeeman (V7) and Oven Top (V6), which we
 </tbody></table>
 
 
-<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-3">V_{EW} = m B + c</script>, <script type="math/tex" id="MathJax-Element-4">m = -8.5, c = 11.83</script>.</p>
+<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-9">V_{EW} = m B + c</script>, <script type="math/tex" id="MathJax-Element-10">m = -8.5, c = 11.83</script>.</p>
 
 <p>Now the experiment (Zeeman/reversal coils B fields are with E/W set to 0)</p>
 
@@ -2720,11 +2720,11 @@ Turned all variacs to 25, except for the Zeeman (V7) and Oven Top (V6), which we
 </tbody></table>
 
 
-<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-5">B = a I_{Z} + b I_{r} - d</script>, <script type="math/tex" id="MathJax-Element-6">a=0.08, b=-0.009, d=-1.1</script>.</p>
+<p>Fitted, we get for the model:  <script type="math/tex" id="MathJax-Element-11">B = a I_{Z} + b I_{r} - d</script>, <script type="math/tex" id="MathJax-Element-12">a=0.08, b=-0.009, d=-1.1</script>.</p>
 
 <p>Together, we get: <br>
-<script type="math/tex" id="MathJax-Element-7">V_{EW} = m (a I_{Z} + b I_{r} - d) + c)</script> <br>
-<script type="math/tex" id="MathJax-Element-8"> \rightarrow V_{EW} = -8.5 (0.08 I_{Z} -0.009 I_{r} + 1.1) + 11.83</script></p>
+<script type="math/tex" id="MathJax-Element-13">V_{EW} = m (a I_{Z} + b I_{r} - d) + c)</script> <br>
+<script type="math/tex" id="MathJax-Element-14"> \rightarrow V_{EW} = -8.5 (0.08 I_{Z} -0.009 I_{r} + 1.1) + 11.83</script></p>
 
 <p>Setting circular polarization <br>
 top = RH, bottom = LH <br>
@@ -2770,5 +2770,84 @@ UP = -0.3</p>
 
 <p>Final load time = 3.22 seconds <br>
 N_fin = 262 million <br>
-N_sat = 280 million</p></div></body>
+N_sat = 280 million</p>
+
+<hr>
+
+
+
+<h1 id="12312016">12/31/2016</h1>
+
+<p>Realigned MOT beams. <br>
+Rebalancing beam powers.  Iniital values: <br>
+(uW, measured with waveplate removed, immediately before first chamber window) <br>
+Top:  127 <br>
+Bottom:  136 <br>
+NW:  58 <br>
+NE:  111 <br>
+SW:   114 <br>
+SE:  76</p>
+
+<p>Final Values: <br>
+Top:  104 <br>
+Bottom:  105 <br>
+NW:  101 <br>
+NE:  100 <br>
+SW:  99 <br>
+SE:  99</p>
+
+<p>Half-wave plates for beam balancing: <br>
+main beam balance:  76.5 <br>
+secondary beam balance:  56.5 <br>
+U/D beam balance:  290.9 <br>
+NE/SW beam balance:  122.6 <br>
+NW/SE beam balance:  109.6</p>
+
+<p>Resetting polarization <br>
+Final values: <br>
+Top:  RH,  <br>
+Bottom: LH, <br>
+NW: RH, <br>
+NE:  RH, <br>
+SW:  LH, <br>
+SE:  LH, </p>
+
+<h1 id="010116">01/01/16</h1>
+
+<p>Checking AOM freqs: <br>
+measured directly using three serial attenuators (20 + 10 + 5 dBm) <br>
+<strong>Spectroscopy</strong>: <br>
+71.04 MHz  <br>
+-20.01 dBm (measured), 14.99 dBm (actual) <br>
+<strong>Zeeman cooling</strong>: <br>
+250.00 MHz <br>
+-8.46 dBm (measured), 26.54 dBm (actual), 0.45W <br>
+<strong>Imaging primary</strong>: <br>
+97.36 MHz <br>
+-2.80 dBm (measured), 32.20 dBm (actual), 1.66 W <br>
+<strong>Cooling</strong>: <br>
+38.90 MHz <br>
+-8.7 dBm (measured), 26.3 dBm (actual), 0.427 W <br>
+<strong>Imaging repump</strong>: <br>
+79.73 MHz <br>
+-3.27 dBm (measured), 31.73 dBm (actual), 1.49 W <br>
+<strong>Repump Darkspot</strong>: <br>
+82.03 MHz <br>
+0.80 dBm (measured), 35.80 dBm (actual), 3.802 W <br>
+<strong>Zeeman repump</strong>: <br>
+260.00 MHz</p>
+
+<p>SAS: <br>
+pump = 190 uW in 17.1 cm^2 = 0.1 mW/cm^2 <br>
+probe = 25 uW in 9.621 cm^2 = 0.0026 mW/cm^2</p>
+
+<p>Note that phase in lock-in is affected by angle of spectroscopy AOM.</p>
+
+<p>With current set-up, optimal lock-in phase is 63 degrees.  Signal looks like this:</p>
+
+<p><img src="https://lh3.googleusercontent.com/j-RIw43ApaLtRkfAiBmnxaouUSBbE6QUwsElKPhFebKXQpDsYzIJjKQyO_AYqlvYKpge7uEJ=s0" alt="enter image description here" title="d2line_measured.png"></p>
+
+<p><img src="https://lh3.googleusercontent.com/01IjQ-QPg_DBWJ8pIs63RUWXq_gQ1M_xlKRug4y4BKi1jTLSD0hUgw30EKBe7kM1aG1t_UuB=s0" alt="enter image description here" title="d2line_measured_fit_params.PNG"></p>
+
+<p>The red line indicates exactly the F’=(2,3) cross-over, 29 MHz detuned from the F’=3 transition.</p></div></body>
 </html>
